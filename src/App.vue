@@ -19,8 +19,8 @@ export default {
   name: 'App',
 
   components: {
-    BuyAgain,
-    PartnerPincode,
+    // BuyAgain,
+    // PartnerPincode,
     ProductSlider
   },
 
