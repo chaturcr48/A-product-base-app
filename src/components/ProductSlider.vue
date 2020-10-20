@@ -1,6 +1,6 @@
 <template>
-  <v-conatiner>
-    <v-sheet class="mx-auto" elevation="8" max-width="1100">
+  
+    <v-sheet class="mx-auto" elevation="8" max-width="800">
       <div class="pl-4 pt-4">
         <v-row>
           <v-col cols-6 md-6 align="start" justify="start">
@@ -49,7 +49,6 @@
         </v-slide-item>
       </v-slide-group>
     </v-sheet>
-  </v-conatiner>
 </template>
 
 
