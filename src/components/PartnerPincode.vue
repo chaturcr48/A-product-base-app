@@ -97,7 +97,7 @@ import axios from "axios";
     methods:{
         async submitPin(){
             let data= await axios
-                .get(`https://api-oqcqf.run-ap-south1.goorm.io/api/${this.pincode}`)
+                .get(`https://partnerpincode.herokuapp.com/api/${this.pincode}`)
                 .then(function(response){
                     if(response.data==0){
                         var notFound = 'No Partner Found'
