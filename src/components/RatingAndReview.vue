@@ -70,8 +70,8 @@
           </thead>
           <tbody>
             <tr>
-              <td>Biscuits</td>
-              <td>Biscuits</td>
+              <td>{{productInfo.Variations[0].ProductSpecifications[0].value}}</td>
+              <td>{{productInfo.Variations[0].ProductSpecifications[1].value}}</td>
             </tr>
           </tbody>
         </template>
