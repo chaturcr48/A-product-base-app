@@ -1,28 +1,28 @@
 <template>
   <v-app>
-    <v-main>
-      <AppNavigation/>
-    </v-main>
+    <ProductDetails />
+    <router-view></router-view>
   </v-app>
 </template>
 
 <script>
-// import Header from './components/Header';
-// import OrderSummary from './components/OrderSummary';
-import AppNavigation from './components/AppNavigation';
-
-// import ReviewAndRating from './components/ReviewAndRating';
-
-
+// import Header from "./components/Header";
+import ProductDetails from "./components/ProductDetails";
+// import ProfilePage from "./components/Profile-Page";
+// import MyWishlist from "./components/MyWishlist";
+// import SearchResultsPage from "./components/SearchResultsPage";
+// import SearchPage from "./components/SearchPage";
 
 export default {
-  name: 'App',
+  name: "App",
 
   components: {
     // Header,
-    // OrderSummary
-    AppNavigation
-    // ReviewAndRating
+    ProductDetails,
+    // ProfilePage,
+    // MyWishlist,
+    // SearchResultsPage,
+    // SearchPage,
   },
 
   data: () => ({
