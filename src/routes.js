@@ -7,8 +7,8 @@ import MyWishlist from './components/MyWishlist';
 import Category from './components/Category';
 import RatingAndReview from './components/RatingAndReview';
 import ViewAllReviews from './components/ViewAllReviews';
-import ReviewAPartner from './components/ReviewAPartner';
-
+import Form from './components/Form';
+import FormView from './components/FormView';
 
 export const routes = [
     {path: '/productslider', component: ProductSlider},
@@ -20,6 +20,6 @@ export const routes = [
     {path: '/category', component: Category},
     {path: '/ratingAndReview',component: RatingAndReview},
     {path:"/viewAllReviews",component: ViewAllReviews},
-    {path:'/reviewAPartner',component:ReviewAPartner},
-    {path:"/viewAllReviews",component: ViewAllReviews}
+    {path:"/form",component: Form},
+    {path:"/formview",component: FormView},
 ];

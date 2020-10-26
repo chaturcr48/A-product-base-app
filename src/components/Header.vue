@@ -6,6 +6,8 @@
         <v-tab><router-link to="/ratingAndReview">RatingAndReview</router-link></v-tab>
         <v-tab><router-link to="/viewAllReviews">View All Reviews</router-link></v-tab>
         <v-tab><router-link to="/reviewAPatner">Review A Partner</router-link></v-tab>
+        <v-tab><router-link to="/form">Form</router-link></v-tab>
+        <v-tab><router-link to="/formview">Form View</router-link></v-tab>
 
     </v-tabs>
 </template>
