@@ -87,150 +87,159 @@
 
     </v-container>
       <div class="divider mb-2 mt-2"></div>
-      <v-container>
-        <v-content class="text-left ml-3 font-weight-bold subheading-1">
-          Review and Ratings
-      </v-content>
-      <v-layout row wrap align-center>
-        <v-flex class="text-left">
-          <v-card
-          width=60
-          height=25
-          elevation=0
-            class="green rounded-lg ml-6 float-left"
-          >
-          <v-text class="white--text ml-2 mt-1">
-              {{averageRating}}
-          </v-text>
-          <v-icon small color="white" class="mt-n1">
-            mdi-star
-          </v-icon>
-           </v-card>
-           <v-card 
-            elevation="0"
-           class="d-flex flex-end pl-5 font-weight-bold">
-             <v-text>
-               {{ratingsFetched.length}} Reviews
-             </v-text>
-           </v-card>
-        </v-flex>
-      </v-layout> 
-      <v-divider
-        class="mt-2 ml-3"
-      >
-      </v-divider>
+     <v-container>
+            <v-card
+                elevation=0
+            >
+                <v-card-title
+                    class="subheading-1 font-weight-bold"
+                >
+                    REVIEW AND RATINGS
+                </v-card-title>
+                <v-divider
+                    :color="color.grey"
+                    class="ml-4 mr-4 mt-n3"
+                ></v-divider>
+                <v-card elevation=0 height="70" class='mt-1'>
+                    <v-card-title
+                    >
+                <p class="text-h6 font-weight-bold">
+                Average Rating
+                </p>
+                <v-card
+                        elevation=0
+                        :color="color.green"
+                        width="60"
+                        height="30"
+                        class="rounded-lg text-center font-weight-bold float-left white--text pl-1 mt-n4 ml-16"
+                    >
+                        <p
+                            class="float-left pt-n1 text-subheading-2"
+                        >{{calculateAverageRating()}}</p>
+                        <v-icon color="white" class=" mt-n1">
+                            mdi-star
+                        </v-icon>
+                    </v-card>
+                </v-card-title>
+            </v-card>
+            <v-card height="70" elevation="0">
+                <v-card-title
+                >
+                <p class="text-h6 font-weight-bold ">
+                Total Reviews:
+                </p>
+                <p class="font-weight-normal pl-10 ml-10">
+                {{reviews.length}}
+            </p>
+        </v-card-title>
 
-      <v-container
-        
-         v-for="(rating) of ratingsFetched.slice(0,5)" :key='rating.userName'
-         class="ml-n3"
-      >
+            </v-card>
+            <v-divider 
+                :color="color.lightgrey"
+                class="ml-4 mr-4"    
+            >
+            </v-divider>
+            <v-card 
+                elevation=0
+                row wrap align-center
+                class="mt-4 ml-4"
+            >
+                <v-flex 
+                    elevation=0
+                    class="text-left">
+                    <v-container 
+                        class="mt-1"
+                        v-for="review of reviews.slice(0,5)" :key="review.userId"  
+                    >
+                        <v-card
+                            elevation=0
+                            :color="color.green"
+                            width="50"
+                            height="25"
+                            class="rounded-lg font-weight-bold float-left white--text pl-1"
+                    >
+                        <p
+                            class="ml-1 text-center float-left"
+                        >{{review.rating}}</p>
+                        <v-icon small color="white" class="ml-1 text-center">
+                            mdi-star
+                        </v-icon>
+                    </v-card>
+                    <v-card  elevation="0" class="float-left ml-5 ">
+                        <p class="font-weight-bold">{{review.title}} <span class="float-right text-subheading-1">By: {{review.userId}}</span></p>
+                        <p class='mt-n4 font-weight-normal setWidth'>{{review.review}}</p>
+                        <v-divider :color="color.lightgrey">
+                        </v-divider>
+                    </v-card>
+                    </v-container>
+
+                    
+
+                </v-flex>
+        </v-card>
 
 
-        <v-layout
-        height="500"
-        row wrap align-center class="mt-2">
-        <v-flex
-                  
+    </v-card>
+        <v-card elevation=0 class="float-right text-decoration-underline  blue--text"> 
+        <v-card-title class="text-subtitle-1">View All</v-card-title>
+    </v-card>
+    
+    <v-card elevation="0" class='float-left' width="100%">
+        <v-card-title class="float-left text-subtitle-2 mt-n3 font-weight-bold">Want to rate the product?</v-card-title>
+        <v-btn
+            v-if="!rateButton.isClicked"
+            small
+            align-center text-center
+            class="float-right text-center"
+            outlined
+            :color="color.purple"
+            @click="rateAndReviewToggle()"
+            :disabled="!user.canReview"
+        >
+        Rate Product
+        </v-btn>
+    </v-card>
+
+    <v-card 
+    v-if="rateButton.isClicked"
+        elevation=0 
+        width="100%" 
+        class="float-left text-center"
+        >
+        <v-icon
+            large
+            v-for="star of stars.starsArray" :key="star.id"
+            :color="star.color"
+            @click="numberOfStarsSelected(star.id)"
 
         >
-            <v-card
-            width=50
-            height=25
-            elevation=0
-              class="green rounded-lg ml-6 float-left"
-            >
-            <v-text class="white--text ml-2 mt-1 caption">
-                {{rating.star}}
-            </v-text>
-            <v-icon small color="white" class="">
-              mdi-star
-            </v-icon>
-            </v-card>
-            <v-card 
-              elevation="0"
-            class="d-flex flex-end pl-5 subheading-1">
-              <v-text>
-                By: {{rating.userName}}
-              </v-text>
-            </v-card>  
-        </v-flex> 
- 
-      </v-layout>
-          <v-flex class="ml-3 mt-1">
-            <v-text>
-             {{rating.review}}
-            </v-text>
-          </v-flex>
-          <v-divider
-            class="mt-1 ml-3"
-          >
-          </v-divider>  
-      </v-container>  
-         <v-text class="float-right pt-n1 blue--text">
-            View All
-          </v-text>
-      </v-container>
-       <div class="divider mb-2 mt-2"></div>
-     <v-container>
-           <v-container >
-            <v-content class="text-left font-weight-bold subheading-1">
-                Rate The Product
-            </v-content>
-        <v-layout row wrap align-center>
-          <v-flex class="text-left ml-2">
-                <v-icon class="float-left" v-for="star in ratingStar" :key="star.id" :color="star.color" @click="rate(star.id)">
-                    mdi-star
-                </v-icon>
-          </v-flex>
-              <v-flex class="text-center">
-                  {{ratingMessage.message}}
-     
-          </v-flex>
-            <v-flex class="text-right mr-1">
-                 <v-btn
-                    v-if="!shown"
-                    :color="color.purple"
-                    outlined
-                    small
-                    align-center
-                    @click="rateProduct()"
-                >
-                    Rate Product
-                </v-btn>
-               
-          </v-flex>
-        </v-layout>
-      </v-container>
+            mdi-star
+        </v-icon>
+    </v-card>
+    <v-textarea 
+        v-if="rateButton.isClicked"
+        v-model="stars.review"
+        width="300"
+        label="Review Description"
+        class="float-left ml-16 ma-1 text-center"
+        placeholder="Write your Review"
+        outlined
+    ></v-textarea>
+        <v-btn
+        v-if="rateButton.isClicked"
+        align-center text-center
+        width="190"
+        class="float-left text-center ml-16 white--text"
+        :color="color.purple"
+        @click="storeRateAndRaview()"
+        :disabled="!user.canReview"
+    >
+    Rate Product
+    </v-btn>
 
-      <v-contanier
-        v-if="shown"
-      >
-          <v-textarea
-            v-model="ratingByUser.review"
-            outlined
-            auto-grow
-            color="color.purple"
-            label="Review"
-            placeholder="Type your text here"
-            class= "ma-1"
-          >
-
-          </v-textarea>
-
-              <v-btn
-                  
-                    :color="color.purple"
-                    outlined
-                    class="center"
-                    @click="productRated()"
-                >
-                    Rate Product
-                </v-btn>
-      </v-contanier>
     </v-container>
 
-    <v-footer color="#6a1b9a" class="text-center" fixed padless elevation="6">
+    <!-- <v-footer color="#6a1b9a" class="text-center" fixed padless elevation="6">
       <v-row class="mt-0 mb-0" dense>
         <v-col cols="3">
           <v-btn color="white" icon>
@@ -253,7 +262,7 @@
           <h6 style="color: white">Cart</h6>
         </v-col>
       </v-row>
-    </v-footer>
+    </v-footer> -->
   </div>
 </template>
 
@@ -303,6 +312,10 @@
   height: 15px;
   background-color: rgba(100, 148, 237, 0.144);
 }
+.setWidth{
+    width:200px;
+}
+
 </style>
 
 <script>
@@ -315,143 +328,143 @@
         purple:"#6a1b9a",
         yellow:"#ffeb3b",
         grey:"#c4c4c4",
-        lightPurple:"#963ACE"
+        lightgrey:"#f7f7f7",
+        lightPurple:"#963ACE",
+        green:"#228b22"
       },
-      ratingMessage:{
-          message:" ",
-         
-      },
-      ratingStar:[
-          {
-              id:1,
-              name:"Very Bad",
-              color:"#c4c4c4"
-
-          },
-          {
-              id:2,
-              name:"Bad",
-              color:"#c4c4c4"
-
-          },
-          {
-              id:3,
-              name:"Good",
-              color:"#c4c4c4"
-
-          },
-          {
-              id:4,
-              name:"Very Good",
-              color:"#c4c4c4"
-
-          },
-          {
-              id:5,
-              name:"Excellent",
-              color:"#c4c4c4"
-
-          },          
-
-        ],
-
-        ratingByUser:{
-            id:10,
-            star:0,
-            review:"",
-            userName:"John"
+       productInfo:{},
+        user:{
+              userId:"u25",
+              canReview:false
         },
-        averageRating:0,
-        ratingsFetched:[],
-        productInfo:{},
-      shown:false
+        stars:{
+              starsSelected:0,
+            review:'',
+            starsArray:[
+                            {
+                                id:1,
+                                name:"Very Bad",
+                                color:"#c4c4c4"
+
+                            },
+                            {
+                                id:2,
+                                name:"Bad",
+                                color:"#c4c4c4"
+
+                            },
+                            {
+                                id:3,
+                                name:"Good",
+                                color:"#c4c4c4"
+
+                            },
+                            {
+                                id:4,
+                                name:"Very Good",
+                                color:"#c4c4c4"
+
+                            },
+                            {
+                                id:5,
+                                name:"Excellent",
+                                color:"#c4c4c4"
+
+                            },  
+          ]
+      },
+      reviews:[],
+      rateButton:{
+          isClicked:false
+      }
+
 
   }),
 
   methods:{
-      rate(val){
-          console.log(val);
-          this.ratingByUser.star=val;
-          this.ratingMessage.message=this.ratingStar[val-1].name;
-          for(let i=0;i<=this.ratingStar.length;i++){
-              if(i<=val-1){
-                  this.ratingStar[i].color=this.color.yellow;
-
-              }
-              else{
-                  this.ratingStar[i].color=this.color.grey;
-              }
-          }
-    },
-    rateProduct(){
-        this.shown=!this.shown;
-    },
-    productRated:async function() {
-        console.log(this.ratingByUser);
-        this.shown=!this.shown;
-        await axios.post('https://delivery-partner-api.herokuapp.com/api/rating/',{data:this.ratingByUser}
-     )
-    .then(function (response) {
-        console.log(response);
-    });
-    this.fetchRating();
-    
-    },
+     
      loadProducts:async function(){
-               axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+              axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
               axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
                 let product= await axios
                 .get(`https://delivery-partner-api.herokuapp.com/api/product`)
                 .then(function(response){
-
                    console.log(response);
                     return response.data;
                   }        
                 );
               this.productInfo=product;
+        },
+        numberOfStarsSelected(i){
+            this.stars.starsSelected=i;
+            for(let star of this.stars.starsArray){
+                if(star.id<=i){
+                    star.color=this.color.yellow;
+                }
+                else{
+                    star.color=this.color.grey;
+                }
+                
+            }
+            console.log(this.stars.starsSelected);
+        },
+        rateAndReviewToggle(){
+            this.rateButton.isClicked=!this.rateButton.isClicked;
+        },
+        storeRateAndRaview:async function(){
+            let reviewTitle=this.stars.starsArray[parseInt(this.stars.starsSelected)-1].name;
+            let review={
+                productId:1,
+                userId:'u25',
+                rating:this.stars.starsSelected,
+                title:reviewTitle,
+                review:this.stars.review
+            }
+            let userId='u25';
+            let reviewResponse= await axios.post(`https://delivery-partner-api.herokuapp.com/api/v2/reviews/1/${userId}`,{data:review});
+            console.log(reviewResponse);
+            this.rateButton.isClicked=!this.rateButton.isClicked;
 
         },
+        fetchReviews: async function(){
+            this.reviews=[];
+            var productId=1;
+            let reviews=await axios.get(`https://delivery-partner-api.herokuapp.com/api/v2/reviews/${productId}`);
+            console.log(reviews.data.sendReviews);
+            for(let review of reviews.data.sendReviews){
+                this.reviews.push(review);
+
+            }
+        },
+        checkIfAlreadyReviewed:async function(){
+            console.log("Checking Review");
+            let reviewFound=await axios.get(`https://delivery-partner-api.herokuapp.com/api/v2/reviews/1/${this.user.userId}`);
+            this.user.canReview=reviewFound;
+            console.log(reviewFound.data);
+            return reviewFound;
+
+        },
+        calculateAverageRating:function(){
+            var averageRate=0;
+            for(let review of this.reviews){
+                averageRate+=parseInt(review.rating);
+            }
+            averageRate=averageRate/this.reviews.length;
+            averageRate=averageRate.toFixed(1);
+            console.log(averageRate);
+            return averageRate;
+        }
+
+
       
-      fetchRating:async function(){
-        this.ratingsFetched=[];
-        var productId=10;
-        let ratings=await axios
-                          .get(`https://delivery-partner-api.herokuapp.com/api/rating/${productId}`)
-                          .then(
-                            function(response){
-                              // console.log(response.data);
-                              return response.data;
-                            }
-                          );
-
-        for(let rating of ratings){
-          this.ratingsFetched.push(rating);
-        }
-          console.log(this.ratingsFetched);
-        
-        // console.log(this.ratingsFetched);
-      },
-      calculateAverageRating:async function(){
-        await this.fetchRating();
-        var averageRating=0;
-        for(let rating of this.ratingsFetched){
-          averageRating+=parseInt(rating.star);
-        }
-        var rate=Math.floor(averageRating/(this.ratingsFetched.length)*10)/10;
-        this.averageRating=rate;
-        return;
-        
-      }
-
-
-        
   },
-    created:function(){
-          
+  created:function(){
+    this.fetchReviews();
+    this.calculateAverageRating();
+    this.checkIfAlreadyReviewed();      
         
   },
   beforeMount:function(){
-    this.calculateAverageRating();
     this.loadProducts();
 
 
