@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar color="purple" dense dark fixed>
+    <v-app-bar color="purple" dense dark>
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
       <v-toolbar-title class="pl-0">Frendy</v-toolbar-title>
@@ -138,13 +138,13 @@ export default {
       overlay: false,
       imagesArray: [
         {
-          src: require("../assets/productImages/1.jpg"),
+          src: ("https://www.aashirvaad.com/images/packet-1.png"),
         },
         {
-          src: require("../assets/productImages/2.jpg"),
+          src: ("https://www.aashirvaad.com/images/packet-1.png"),
         },
         {
-          src: require("../assets/productImages/3.jpg"),
+          src: ("https://www.aashirvaad.com/images/packet-1.png"),
         },
       ],
     };
