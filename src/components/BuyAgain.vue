@@ -130,7 +130,7 @@ export default {
     },
     async mounted() {
         await axios
-        .get('https://api-oqcqf.run-ap-south1.goorm.io/api/buyagain')
+        .get('https://partnerpincode.herokuapp.com/apiv1/buyagain')
         .then(response => {
             this.productData = response.data.detail.items.singleItems;
             console.log(response.data.detail.items.singleItems)

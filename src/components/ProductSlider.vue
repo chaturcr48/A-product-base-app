@@ -63,7 +63,7 @@ export default {
     },
     created() {
         axios
-        .get('https://api-oqcqf.run-ap-south1.goorm.io/api/slider')
+        .get('https://partnerpincode.herokuapp.com/apiv1/slider')
         .then(response => {
             this.productData = response.data.productDefinitions;
             console.log(response.data.productDefinitions)
