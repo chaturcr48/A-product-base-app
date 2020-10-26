@@ -20,6 +20,6 @@ export const routes = [
     {path: '/category', component: Category},
     {path: '/ratingAndReview',component: RatingAndReview},
     {path:"/viewAllReviews",component: ViewAllReviews},
-    {path:'/reviewAPartner',component:ReviewAPartner}
+    {path:'/reviewAPartner',component:ReviewAPartner},
     {path:"/viewAllReviews",component: ViewAllReviews}
 ];
