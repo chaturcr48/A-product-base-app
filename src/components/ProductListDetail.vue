@@ -8,7 +8,7 @@
       <v-spacer></v-spacer>
 
       <v-btn icon>
-        <v-icon>mdi-chevron-left</v-icon>
+        <v-icon v-on:click="back($event)">mdi-chevron-left</v-icon>
       </v-btn>
       <v-btn class="purple px-1 py-1">SELECT PARTNER </v-btn>
     </v-app-bar>
@@ -152,6 +152,9 @@ export default {
     imgClicked() {
       this.overlay = !this.overlay;
     },
+    back() {
+        this.$router.go(-1)
+    }
   },
 };
 </script>

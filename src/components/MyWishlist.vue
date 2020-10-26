@@ -61,7 +61,7 @@ export default {
     return {
       imagesArray: [
         {
-          src: require("../assets/productImages/3.jpg"),
+          src: ("https://www.aashirvaad.com/images/packet-1.png"),
           brandName: "BB ROYAL",
           productName: "Wheet Flour( 2 Kg )",
           frendyPrice: 79,
@@ -69,7 +69,7 @@ export default {
           off: 3,
         },
         {
-          src: require("../assets/productImages/2.jpg"),
+          src: ("https://www.aashirvaad.com/images/packet-1.png"),
           brandName: "RASOI",
           productName: "Pulses ( 3 Kg )",
           frendyPrice: 247,
@@ -77,7 +77,7 @@ export default {
           off: 4,
         },
         {
-          src: require("../assets/productImages/3.jpg"),
+          src: ("https://www.aashirvaad.com/images/packet-1.png"),
           brandName: "BB ROYAL",
           productName: "Wheet Flour( 2 Kg )",
           frendyPrice: 79,
@@ -85,7 +85,7 @@ export default {
           off: 3,
         },
         {
-          src: require("../assets/productImages/2.jpg"),
+          src: ("https://www.aashirvaad.com/images/packet-1.png"),
           brandName: "RASOI",
           productName: "Pulses ( 3 Kg )",
           frendyPrice: 247,

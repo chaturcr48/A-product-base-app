@@ -107,6 +107,7 @@ import axios from "axios";
                     }
                 });
         this.partnerData=data;
+        console.log(data)
         }
     }
 }

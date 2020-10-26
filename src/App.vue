@@ -2,7 +2,9 @@
   <v-app>
     <v-main>
       <Header/>
+      <keep-alive>
       <router-view></router-view>
+      </keep-alive>
     </v-main>
   </v-app>
 </template>
@@ -20,5 +22,6 @@ export default {
   data: () => ({
     //
   }),
-};
+  
+}
 </script>
