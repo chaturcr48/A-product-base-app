@@ -5,6 +5,7 @@
         <v-tab><router-link to="/partnerpincode">PartnerPincode</router-link></v-tab>
         <v-tab><router-link to="/ratingAndReview">RatingAndReview</router-link></v-tab>
         <v-tab><router-link to="/viewAllReviews">View All Reviews</router-link></v-tab>
+        <v-tab><router-link to="/reviewAPatner">Review A Partner</router-link></v-tab>
 
     </v-tabs>
 </template>
