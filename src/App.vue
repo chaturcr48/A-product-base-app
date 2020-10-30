@@ -9,6 +9,8 @@
   </v-app>
 </template>
 
+
+
 <script>
 import Header from "./components/Header";
 // import ProductDetails from "./components/ProductDetails";

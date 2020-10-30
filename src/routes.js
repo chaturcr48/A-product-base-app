@@ -9,8 +9,13 @@ import RatingAndReview from './components/RatingAndReview';
 import ViewAllReviews from './components/ViewAllReviews';
 import Form from './components/Form';
 import FormView from './components/FormView';
+import ProductDetails from './components/ProductDetails';
+import AppNavigation from './components/AppNavigation';
+import SearchPage from './components/SearchPage';
+import Contact from './components/Contact';
 
 export const routes = [
+    {path:"/",component: AppNavigation},
     {path: '/productslider', component: ProductSlider},
     {path: '/buyagain', component: BuyAgain},
     {path: '/partnerpincode', component: PartnerPincode},
@@ -22,4 +27,7 @@ export const routes = [
     {path:"/viewAllReviews",component: ViewAllReviews},
     {path:"/form",component: Form},
     {path:"/formview",component: FormView},
+    {path:"/productdetails",component: ProductDetails},
+    {path:"/searchpage",component: SearchPage},
+    {path:"/contact",component: Contact},
 ];
