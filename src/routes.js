@@ -12,7 +12,9 @@ import FormView from './components/FormView';
 import ProductDetails from './components/ProductDetails';
 import AppNavigation from './components/AppNavigation';
 import SearchPage from './components/SearchPage';
-import Contact from './components/Contact';
+import ContactPartner from './components/ContactPartner';
+import Zipcode from './components/Zipcode';
+import Login from './components/Login';
 
 export const routes = [
     {path:"/",component: AppNavigation},
@@ -29,5 +31,7 @@ export const routes = [
     {path:"/formview",component: FormView},
     {path:"/productdetails",component: ProductDetails},
     {path:"/searchpage",component: SearchPage},
-    {path:"/contact",component: Contact},
+    {path:"/contactpartner",component: ContactPartner},
+    {path:"/zipcode",component: Zipcode},
+    {path:"/login",component: Login},
 ];

@@ -39,8 +39,6 @@
       <v-list
         nav
         dense
-
-
       >
         <v-list-item-group
           v-model="group"
@@ -123,7 +121,7 @@ import ProductSlider from "./ProductSlider";
       drawer: false,
       group: null,
       user:{
-        name:"Aniket",
+        name:"User",
         image:"@/assets/boy.png",
         isLoggedIn:'true'
       },
@@ -162,11 +160,15 @@ import ProductSlider from "./ProductSlider";
           name:"Product Request",
           icon:"mdi-near-me"
         },
-         {
+        {
           name:"Contact Partner",
           icon:"mdi-phone"
         },
-         {
+        {
+          name:"Zip Form",
+          icon:"mdi-mail"
+        },
+        {
           name:"Sign Out",
           icon:"mdi-login"
 
@@ -196,7 +198,10 @@ import ProductSlider from "./ProductSlider";
           this.$router.push('/form')
         }
         else if(passedIndex == 6){
-          this.$router.push('/contact')
+          this.$router.push('/contactpartner')
+        }
+        else if(passedIndex == 7){
+          this.$router.push('/zipcode')
         }
       },
       partnerRoute(){

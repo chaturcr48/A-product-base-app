@@ -23,7 +23,7 @@
                     </div>
                     <v-row>
                         <v-col cols-10 md-10>
-                            <h3 class="font-weight-bold mt-n4">
+                            <h3 class="font-weight-bold mt-n4" v-on:click="redirect()">
                                 {{product.product.identifier}}
                             </h3>
                         </v-col>
@@ -140,6 +140,9 @@ export default {
         share(shareProductIndex) {
             this.sharedProductName = this.productData[shareProductIndex].product;
             this.sharedProductPrice = this.productData[shareProductIndex].product.ProductPrices[0];
+        },
+        redirect(){
+            this.$router.push('/productdetails')
         }
     }
 }

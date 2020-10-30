@@ -25,7 +25,7 @@
         >
         <v-list-item three-line>
           <v-list-item-avatar size="110" tile>
-            <v-img :src="product.Image"></v-img>
+            <v-img v-bind:src="product.Image"></v-img>
           </v-list-item-avatar>
 
           <v-list-item-content class="ml-4">
@@ -80,7 +80,7 @@ export default {
           Mrp: "82",
           Discount: "3",
           Company: "BB ROYAL",
-          Image: "https://www.aashirvaad.com/images/packet-1.png",
+          Image: "https://www.aashirvaad.com/assets/Aashirvaad/images/packet-1.png",
         },
         {
           Name: "Pulses",
@@ -89,7 +89,7 @@ export default {
           Mrp: "255",
           Discount: "3",
           Company: "RASOI",
-          Image: "https://www.aashirvaad.com/images/packet-1.png",
+          Image: "https://www.aashirvaad.com/assets/Aashirvaad/images/packet-1.png",
         },
       ],
     };

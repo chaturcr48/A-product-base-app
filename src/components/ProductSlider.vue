@@ -1,6 +1,6 @@
 <template>
   
-    <v-sheet class="mx-auto" elevation="8" max-width="800">
+    <v-sheet class="mx-auto" elevation="8" max-width="1185">
       <div class="pl-4 pt-4">
         <v-row>
           <v-col cols-6 md-6 align="start" justify="start">
