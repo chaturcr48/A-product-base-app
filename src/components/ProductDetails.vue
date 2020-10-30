@@ -8,7 +8,7 @@
       <v-spacer></v-spacer>
 
       <v-btn icon>
-        <v-icon>mdi-chevron-left</v-icon>
+        <v-icon v-on:click="back()">mdi-chevron-left</v-icon>
       </v-btn>
       <v-btn class="purple px-1 py-1">SELECT PARTNER </v-btn>
     </v-app-bar>
@@ -138,13 +138,13 @@ export default {
       overlay: false,
       imagesArray: [
         {
-          src: ("https://www.aashirvaad.com/images/packet-1.png"),
+          src: ("https://www.aashirvaad.com/assets/Aashirvaad/images/packet-2-left.png"),
         },
         {
-          src: ("https://www.aashirvaad.com/images/packet-1.png"),
+          src: ("https://www.aashirvaad.com/assets/Aashirvaad/images/packet-2-left.png"),
         },
         {
-          src: ("https://www.aashirvaad.com/images/packet-1.png"),
+          src: ("https://www.aashirvaad.com/assets/Aashirvaad/images/packet-2-left.png"),
         },
       ],
     };
@@ -153,6 +153,9 @@ export default {
     imgClicked() {
       this.overlay = !this.overlay;
     },
+    back(){
+      this.$router.back(-1);
+    }
   },
 };
 </script>
