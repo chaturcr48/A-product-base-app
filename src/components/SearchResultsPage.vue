@@ -24,10 +24,15 @@
               max-width="200"
               @click="showOverlay"
             >
-              <v-img class="mx-auto" width="150px" :src="overlay.src"> </v-img>
+              <v-img
+                class="mx-auto"
+                width="150px"
+                :src="overlay.product.imageAbsolutePath"
+              >
+              </v-img>
 
               <v-card-title class="pb-0 pt-1 black--text">
-                {{ overlay.productTitle }}
+                {{ overlay.product.identifier }}
               </v-card-title>
 
               <v-card-text class="text--primary">
@@ -41,27 +46,31 @@
         <v-col
           cols="6"
           class="pa-0"
-          v-for="(product, index) in productsArray"
+          v-for="(product, index) in productData"
           :key="index"
         >
           <v-card class="mx-auto pa-2 pt-4 rounded-0" outlined>
-            <v-img :src="product.src" height="150px" width="150px"></v-img>
+            <v-img
+              :src="product.product.imageAbsolutePath"
+              height="150px"
+              width="150px"
+            ></v-img>
             <v-card-title class="pa-2 pb-0 mb-2">
-              {{ product.productTitle }}<v-spacer></v-spacer
+              {{ product.product.identifier }}<v-spacer></v-spacer
               ><v-icon small>mdi-heart</v-icon>
             </v-card-title>
 
             <v-card-subtitle
               class="pa-2 text-caption font-weight-bold black--text"
             >
-              ₹{{ product.frendyPrice }}
+              ₹{{ product.price }}
               <span
                 class="red--text text-decoration-line-through font-weight-light"
               >
-                ₹{{ product.originalPrice }}</span
+                ₹{{ product.mrp }}</span
               >
               <v-chip class="ml-1 pa-1" color="green" x-small label outlined>
-                ₹{{ product.off }}
+                ₹{{ product.discountAmount }}
               </v-chip>
             </v-card-subtitle>
             <v-card-actions class="pa-1">
@@ -74,7 +83,7 @@
                 >Add +</v-btn
               >
               <v-chip class="ml-1" color="#F5F5F5" label small>
-                {{ product.productVolume }}
+                {{ product.product.Attributes[0].ProductAttributeValue.value }}
               </v-chip>
               <v-spacer></v-spacer>
 
@@ -113,79 +122,30 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   name: "SearchResultsPage",
   methods: {
     showOverlay(index) {
       this.overlayBoolean = !this.overlayBoolean;
-      this.overlay = this.productsArray[index];
+      this.overlay = this.productData[index];
     },
+  },
+  async mounted() {
+    await axios
+      .get("https://partnerpincode.herokuapp.com/apiv1/buyagain")
+      .then((response) => {
+        this.productData = response.data.detail.items.singleItems;
+        console.log(response.data.detail.items.singleItems);
+        // this.productDataGreater = [this.prodcutData, this.productData];
+        // console.log(this.productDataGreater);
+      });
   },
   data: () => ({
     overlayBoolean: false,
     overlay: "",
-    productsArray: [
-      {
-        src: "https://www.aashirvaad.com/images/packet-1.png",
-        productTitle: "Maida 1 Kg",
-        productDescription:
-          "Processed from the best quality chana dal Absolutely untouched by hands to maintain 100 percent hygiene Advanced grinding process retains the aroma",
-        frendyPrice: 84,
-        originalPrice: 112,
-        off: 28,
-        productVolume: "2 Kg",
-      },
-      {
-        src: "https://www.aashirvaad.com/images/packet-1.png",
-        productTitle: "Soja 500gm",
-        productDescription:
-          "Processed from the best quality chana dal Absolutely untouched by hands to maintain 100 percent hygiene Advanced grinding process retains the aroma",
-        frendyPrice: 20,
-        originalPrice: 35,
-        off: 15,
-        productVolume: "500gm",
-      },
-      {
-        src: "https://www.aashirvaad.com/images/packet-1.png",
-        productTitle: "Tata Salt 1 Kg",
-        productDescription:
-          "Processed from the best quality chana dal Absolutely untouched by hands to maintain 100 percent hygiene Advanced grinding process retains the aroma",
-        frendyPrice: 18,
-        originalPrice: 20,
-        off: 2,
-        productVolume: "500 gm",
-      },
-      {
-        src: "https://www.aashirvaad.com/images/packet-1.png",
-        productTitle: "Besan 1 Kg",
-        productDescription:
-          "Processed from the best quality chana dal Absolutely untouched by hands to maintain 100 percent hygiene Advanced grinding process retains the aroma",
-        frendyPrice: 75,
-        originalPrice: 150,
-        off: 75,
-        productVolume: "1 Kg",
-      },
-      {
-        src: "https://www.aashirvaad.com/images/packet-1.png",
-        productTitle: "Soja 500gm",
-        productDescription:
-          "Processed from the best quality chana dal Absolutely untouched by hands to maintain 100 percent hygiene Advanced grinding process retains the aroma",
-        frendyPrice: 20,
-        originalPrice: 35,
-        off: 15,
-        productVolume: "500gm",
-      },
-      {
-        src: "https://www.aashirvaad.com/images/packet-1.png",
-        productTitle: "Maida 1 Kg",
-        productDescription:
-          "Processed from the best quality chana dal Absolutely untouched by hands to maintain 100 percent hygiene Advanced grinding process retains the aroma",
-        frendyPrice: 84,
-        originalPrice: 112,
-        off: 28,
-        productVolume: "2 Kg",
-      },
-    ],
+    productData: [],
+    productDataGreater: "",
   }),
 };
 </script>

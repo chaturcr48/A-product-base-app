@@ -10,8 +10,14 @@
       </v-card-title>
       <v-divider></v-divider>
     </v-card>
-    <div v-for="product in productData" v-bind:key="product.id">
-      <v-card class="py-4 my-0" elevation="0" tile color="#fafafa">
+    <div v-for="(product, index) in productData" v-bind:key="product.id">
+      <v-card
+        v-show="index < 2"
+        class="py-4 my-0"
+        elevation="0"
+        tile
+        color="#fafafa"
+      >
         <v-btn
           class="ml-n2 white--text font-weight-regular"
           color="#fca219"
@@ -21,19 +27,19 @@
           rounded
           absolute
           left
-          >Rs {{ product.Discount }}<br />off</v-btn
+          >Rs {{ product.discountAmount }}<br />off</v-btn
         >
         <v-list-item three-line>
           <v-list-item-avatar size="110" tile>
-            <v-img :src="product.Image"></v-img>
+            <v-img :src="product.product.imageAbsolutePath"></v-img>
           </v-list-item-avatar>
 
           <v-list-item-content class="ml-4">
-            <div class="caption">{{ product.Company }} PRESENTS</div>
+            <div class="caption">{{ product.product.brandName }} PRESENTS</div>
             <v-row>
               <v-col cols-10>
                 <h3 class="font-weight-bold mt-n4">
-                  {{ product.Name }} {{ product.Quantity }}
+                  {{ product.product.identifier }}
                 </h3>
               </v-col>
             </v-row>
@@ -41,7 +47,7 @@
               <v-row>
                 <v-col cols-6 align="left" class="pt-0">
                   <h4 class="font-weight-medium mr-auto price">
-                    Rs {{ product.Price }}/-
+                    Rs {{ product.price }}/-
                   </h4>
                 </v-col>
                 <v-col cols-6 align="right" class="pt-0">
@@ -50,7 +56,7 @@
                     <span
                       class="font-weight-medium red--text text-decoration-line-through ml-1"
                     >
-                      {{ product.Mrp }}</span
+                      {{ product.mrp }}</span
                     >
                   </h4>
                 </v-col>
@@ -68,31 +74,21 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "MyWishlist",
   data() {
     return {
-      productData: [
-        {
-          Name: "Wheet Flour",
-          Quantity: "( 2 Kg )",
-          Price: "79",
-          Mrp: "82",
-          Discount: "3",
-          Company: "BB ROYAL",
-          Image: "https://www.aashirvaad.com/images/packet-1.png",
-        },
-        {
-          Name: "Pulses",
-          Quantity: "( 3 Kg )",
-          Price: "247",
-          Mrp: "255",
-          Discount: "3",
-          Company: "RASOI",
-          Image: "https://www.aashirvaad.com/images/packet-1.png",
-        },
-      ],
+      productData: [],
     };
+  },
+  async mounted() {
+    await axios
+      .get("https://partnerpincode.herokuapp.com/apiv1/buyagain")
+      .then((response) => {
+        this.productData = response.data.detail.items.singleItems;
+        console.log(response.data.detail.items.singleItems);
+      });
   },
 };
 </script>

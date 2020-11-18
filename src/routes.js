@@ -7,10 +7,17 @@ import MyWishlist from './components/MyWishlist';
 import Category from './components/Category';
 import RatingAndReview from './components/RatingAndReview';
 import ViewAllReviews from './components/ViewAllReviews';
-import ReviewAPartner from './components/ReviewAPartner';
-
+import Form from './components/Form';
+import FormView from './components/FormView';
+import ProductDetails from './components/ProductDetails';
+import AppNavigation from './components/AppNavigation';
+import SearchPage from './components/SearchPage';
+import ContactPartner from './components/ContactPartner';
+import Zipcode from './components/Zipcode';
+import Login from './components/Login';
 
 export const routes = [
+    {path:"/",component: AppNavigation},
     {path: '/productslider', component: ProductSlider},
     {path: '/buyagain', component: BuyAgain},
     {path: '/partnerpincode', component: PartnerPincode},
@@ -20,6 +27,11 @@ export const routes = [
     {path: '/category', component: Category},
     {path: '/ratingAndReview',component: RatingAndReview},
     {path:"/viewAllReviews",component: ViewAllReviews},
-    {path:'/reviewAPartner',component:ReviewAPartner},
-    {path:"/viewAllReviews",component: ViewAllReviews}
+    {path:"/form",component: Form},
+    {path:"/formview",component: FormView},
+    {path:"/productdetails",component: ProductDetails},
+    {path:"/searchpage",component: SearchPage},
+    {path:"/contactpartner",component: ContactPartner},
+    {path:"/zipcode",component: Zipcode},
+    {path:"/login",component: Login},
 ];

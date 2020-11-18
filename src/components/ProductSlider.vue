@@ -1,10 +1,10 @@
 <template>
   
-    <v-sheet class="mx-auto" elevation="8" max-width="800">
+    <v-sheet class="mx-auto" elevation="8" max-width="1185">
       <div class="pl-4 pt-4">
         <v-row>
           <v-col cols-6 md-6 align="start" justify="start">
-            <h3 class="font-weight-regular">Tagline Tagline Tagline</h3>
+            <h3 class="font-weight-regular">Popular Products</h3>
           </v-col>
           <v-col cols-6 md-6 align="end" justify="end" class="mr-6 mt-n1">
             <v-btn width="100" text class="font-weight-light blue--text">View More</v-btn>

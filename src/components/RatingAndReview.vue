@@ -132,38 +132,51 @@
                 {{reviews.length}}
             </p>
         </v-card-title>
-      </v-card>
-      <v-divider 
-          :color="color.lightgrey"
-          class="ml-4 mr-4"    
-      >
-      </v-divider>
-      <v-card v-for="review of reviews.slice(0,5)" :key="review.userId"  
-          elevation=0
-          row wrap align-center
-          class="mt-4 ml-4"
-        >        
-        <v-card
-              elevation=0
-              :color="color.green"
-              width="50"
-              height="25"
-              class="rounded-lg font-weight-bold float-left white--text pl-1 mt-1"
-          >
-          <p
-              class="ml-1 text-center float-left"
-          >{{review.rating}}</p>
-          <v-icon small color="white" class="ml-1 text-center">
-              mdi-star
-          </v-icon>
+
+            </v-card>
+            <v-divider 
+                :color="color.lightgrey"
+                class="ml-4 mr-4"    
+            >
+            </v-divider>
+            <v-card 
+                elevation=0
+                row wrap align-center
+                class="mt-4 ml-4"
+            >
+                <v-flex 
+                    elevation=0
+                    class="text-left">
+                    <v-container 
+                        class="mt-1"
+                        v-for="review of reviews.slice(0,5)" :key="review.userId"  
+                    >
+                        <v-card
+                            elevation=0
+                            :color="color.green"
+                            width="50"
+                            height="25"
+                            class="rounded-lg font-weight-bold float-left white--text pl-1"
+                    >
+                        <p
+                            class="ml-1 text-center float-left"
+                        >{{review.rating}}</p>
+                        <v-icon small color="white" class="ml-1 text-center">
+                            mdi-star
+                        </v-icon>
+                    </v-card>
+                    <v-card  elevation="0" class="float-left ml-5 ">
+                        <p class="font-weight-bold">{{review.title}} <span class="float-right text-subheading-1">By: {{review.userId}}</span></p>
+                        <p class='mt-n4 font-weight-normal setWidth'>{{review.review}}</p>
+                        <v-divider :color="color.lightgrey">
+                        </v-divider>
+                    </v-card>
+                    </v-container>
+
+                    
+
+                </v-flex>
         </v-card>
-        <v-card  elevation="0" class="ml-16">
-          <p class="font-weight-bold">{{review.title}} <span class="float-right text-subheading-1">By: {{review.userId}}</span></p>
-          <p class='mt-n4 font-weight-normal setWidth'>{{review.review}}</p>
-          <v-divider :color="color.lightgrey">
-          </v-divider>
-        </v-card>
-      </v-card>
 
 
     </v-card>
@@ -252,6 +265,58 @@
     </v-footer> -->
   </div>
 </template>
+
+
+<style scoped>
+.production-description{
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+.off {
+  color: green;
+  margin-left: 10px;
+  background-color: rgba(90, 238, 90, 0.377);
+}
+.divider {
+  height: 15px;
+  background-color: #f1f1f1;
+}
+.body{
+  margin-bottom: 55px;
+}
+.add{
+  color: white;
+}
+.add-icon{
+  margin-left: 10px;
+  font-size: 25px;
+  color: white;
+}
+</style>
+
+<script>
+  export default{
+    name:"RatingAndReview",
+    data:()=>({
+      
+    })
+  }
+</script>
+
+<style scoped>
+.off {
+  color: green;
+  background-color: rgba(90, 238, 90, 0.377);
+}
+.divider {
+  height: 15px;
+  background-color: rgba(100, 148, 237, 0.144);
+}
+.setWidth{
+    width:200px;
+}
+
+</style>
 
 <script>
 
@@ -408,43 +473,3 @@
   
 </script>
 
-
-<style scoped>
-.production-description{
-  margin-top: 15px;
-  margin-bottom: 25px;
-}
-.off {
-  color: green;
-  margin-left: 10px;
-  background-color: rgba(90, 238, 90, 0.377);
-}
-.divider {
-  height: 15px;
-  background-color: #f1f1f1;
-}
-.body{
-  margin-bottom: 55px;
-}
-.add{
-  color: white;
-}
-.add-icon{
-  margin-left: 10px;
-  font-size: 25px;
-  color: white;
-}
-
-.off {
-  color: green;
-  background-color: rgba(90, 238, 90, 0.377);
-}
-.divider {
-  height: 15px;
-  background-color: rgba(100, 148, 237, 0.144);
-}
-.setWidth{
-    width:100vw;
-}
-
-</style>

@@ -17,24 +17,24 @@
             >View All Reviews</v-content>
         </v-toolbar>
         <v-container 
-                        class="mt-1"
-                        v-for="review of reviews" :key="review.userId"  
+                        class="mt-2"
+                         
                     >
-                        <v-card
+                        <v-card v-for="review of reviews" :key="review.userId" 
                             elevation=0
                             :color="color.green"
                             width="50"
                             height="25"
-                            class="rounded-lg font-weight-bold float-left white--text pl-1 ml-4"
+                            class="rounded-lg font-weight-bold float-left white--text"
                     >
                         <p
-                            class="ml-1 text-center float-left"
+                            class="ml-1 text-center"
                         >{{review.rating}}</p>
                         <v-icon small color="white" class="ml-1 text-center">
                             mdi-star
                         </v-icon>
                     </v-card>
-                    <v-card  elevation="0" class="float-left ml-5 ">
+                    <v-card  elevation="0" class="ml-16 ">
                         <p class="font-weight-bold">{{review.title}} <span class="float-right text-subheading-1">By: {{review.userId}}</span></p>
                         <p class='mt-n4 font-weight-normal setWidth'>{{review.review}}</p>
                         <v-divider :color="color.lightgrey">
