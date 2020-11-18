@@ -169,10 +169,14 @@ import ProductSlider from "./ProductSlider";
           icon:"mdi-mail"
         },
         {
+          name:"Screenshot Share",
+          icon:"mdi-fullscreen"
+        },
+        {
           name:"Sign Out",
           icon:"mdi-login"
 
-        },
+        }
       ],
       routeIndex: [],
     }),
@@ -202,6 +206,9 @@ import ProductSlider from "./ProductSlider";
         }
         else if(passedIndex == 7){
           this.$router.push('/zipcode')
+        }
+        else if(passedIndex==8){
+          this.$router.push("/screenshotShare")
         }
       },
       partnerRoute(){

@@ -15,6 +15,7 @@ import SearchPage from './components/SearchPage';
 import ContactPartner from './components/ContactPartner';
 import Zipcode from './components/Zipcode';
 import Login from './components/Login';
+import ScreenShotShare from './components/ScreenshotShare';
 
 export const routes = [
     {path:"/",component: AppNavigation},
@@ -34,4 +35,5 @@ export const routes = [
     {path:"/contactpartner",component: ContactPartner},
     {path:"/zipcode",component: Zipcode},
     {path:"/login",component: Login},
+    {path:"/screenshotShare",component:ScreenShotShare}
 ];
