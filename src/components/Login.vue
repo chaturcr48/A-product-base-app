@@ -3,7 +3,7 @@
     <v-sheet class="mx-auto" max-width="1200" 
     color="#35194D" height="300">
       <div align="center" justify="center">
-        <v-img src="../assets/frendy.png" 
+        <v-img src="" 
         alt="" height="250px" width="250px" />
       </div>
     </v-sheet>
@@ -44,7 +44,7 @@ export default {
   data() {
     return {
       numberRule: (v) => {
-        if (!v.trim()) return true;
+        // if (!v.trim()) return true;
         if (!isNaN(parseFloat(v)) && v >= 0 && v <= 9999999999) return true;
         return "Incorrect mobile number";
       },

@@ -1,10 +1,10 @@
 <template>
   
-    <v-sheet class="mx-auto" elevation="8" max-width="800">
+    <v-sheet class="mx-auto" elevation="8" max-width="1185">
       <div class="pl-4 pt-4">
         <v-row>
           <v-col cols-6 md-6 align="start" justify="start">
-            <h3 class="font-weight-regular">Tagline Tagline Tagline</h3>
+            <h3 class="font-weight-regular">Popular Products</h3>
           </v-col>
           <v-col cols-6 md-6 align="end" justify="end" class="mr-6 mt-n1">
             <v-btn width="100" text class="font-weight-light blue--text">View More</v-btn>
@@ -19,23 +19,23 @@
             max-width="100" max-height="400" outlined>
 
             <v-btn class="ml-n4 white--text caption text-lowercase" color="green accent-4" elevation="0" depressed
-              width="28" height="28" x-small fab rounded absolute left>₹{{product.Discount}}<br/>off</v-btn>
+              width="28" height="28" x-small fab rounded absolute left>₹{{product.Variations[0].ProductPrices[0].discount}}<br/>off</v-btn>
             <div align="center">
-              <v-img v-bind:src="product.Image" height="100px" max-width="90px"></v-img>
+              <v-img v-bind:src="product.imageAbsolutePath" height="100px" max-width="90px"></v-img>
             </div>
 
             <h4 class="pa-1 font-weight-light text-truncate">
-                {{product.Name}}
+                {{product.ProductDetailInLanguages[0].name}}
             </h4>
             <h5 align="center" class="mt-n2 pb-14 mb-6 font-weight-light">
-              ({{product.Quantity}})
+              ({{product.Variations[0].Attributes[0].ProductAttributeValue.value}})
             </h5>
              
             <v-row class="card-actions">
               <v-row align="center" justify="center" class="ml-auto mr-auto">
-                <v-card-subtitle class="pa-2 text-caption font-weight-bold black--text">
-                    ₹{{product.Price}}
-                  <span class="ml-2 red--text text-decoration-line-through font-weight-light">₹{{product.Mrp}}</span>
+                <v-card-subtitle class="pl-2 text-caption font-weight-bold black--text">
+                    ₹{{product.Variations[0].ProductPrices[0].frendyPrice}}
+                  <span class="red--text text-decoration-line-through font-weight-light">₹{{product.Variations[0].ProductPrices[0].mrp}}</span>
                 </v-card-subtitle>
               </v-row>
 
@@ -53,118 +53,21 @@
 
 
 <script>
+import axios from 'axios';
 export default {
     name: 'ProductSlider',
     data() {
         return{
-          productData: [{
-                Name: "Aashirvaad multigrain Aata",
-                Quantity: "5kg",
-                Price: "450",
-                Mrp: "460",
-                Discount: "10",
-                Company: "MULTIGRAINS" ,
-                Image: "https://www.aashirvaad.com/images/packet-1.png"
-            },
-            {
-                Name: "Aashirvaad Aata",
-                Quantity: "5kg",
-                Price: "450",
-                Mrp: "460",
-                Discount: "10",
-                Company: "MULTIGRAINS",
-                Image: "https://www.aashirvaad.com/images/packet-1.png"
-            },
-            {
-                Name: "Aashirvaad Aata",
-                Quantity: "5kg",
-                Price: "450",
-                Mrp: "460",
-                Discount: "10",
-                Company: "MULTIGRAINS",
-                Image: "https://www.aashirvaad.com/images/packet-1.png"
-            },
-            {
-                Name: "Aashirvaad multigrain Aata",
-                Quantity: "5kg",
-                Price: "450",
-                Mrp: "460",
-                Discount: "10",
-                Company: "MULTIGRAINS",
-                Image: "https://www.aashirvaad.com/images/packet-1.png"
-            },
-            {
-                Name: "Aashirvaad multigrain Aata",
-                Quantity: "5kg",
-                Price: "450",
-                Mrp: "460",
-                Discount: "10",
-                Company: "MULTIGRAINS",
-                Image: "https://www.aashirvaad.com/images/packet-1.png"
-            },
-            {
-                Name: "Aashirvaad multigrain Aata",
-                Quantity: "5kg",
-                Price: "450",
-                Mrp: "460",
-                Discount: "10",
-                Company: "MULTIGRAINS",
-                Image: "https://www.aashirvaad.com/images/packet-1.png"
-            },
-            {
-                Name: "Aashirvaad multigrain Aata",
-                Quantity: "5kg",
-                Price: "450",
-                Mrp: "460",
-                Discount: "10",
-                Company: "MULTIGRAINS",
-                Image: "https://www.aashirvaad.com/images/packet-1.png"
-            },
-            {
-                Name: "Aashirvaad multigrain Aata",
-                Quantity: "5kg",
-                Price: "450",
-                Mrp: "460",
-                Discount: "10",
-                Company: "MULTIGRAINS",
-                Image: "https://www.aashirvaad.com/images/packet-1.png"
-            },
-            {
-                Name: "Aashirvaad multigrain Aata",
-                Quantity: "5kg",
-                Price: "450",
-                Mrp: "460",
-                Discount: "10",
-                Company: "MULTIGRAINS",
-                Image: "https://www.aashirvaad.com/images/packet-1.png"
-            },
-            {
-                Name: "Aashirvaad multigrain Aata",
-                Quantity: "5kg",
-                Price: "450",
-                Mrp: "460",
-                Discount: "10",
-                Company: "MULTIGRAINS",
-                Image: "https://www.aashirvaad.com/images/packet-1.png"
-            },{
-                Name: "Aashirvaad multigrain Aata",
-                Quantity: "5kg",
-                Price: "450",
-                Mrp: "460",
-                Discount: "10",
-                Company: "MULTIGRAINS",
-                Image: "https://www.aashirvaad.com/images/packet-1.png"
-            },{
-                Name: "Aashirvaad multigrain Aata",
-                Quantity: "5kg",
-                Price: "450",
-                Mrp: "460",
-                Discount: "10",
-                Company: "MULTIGRAINS",
-                Image: "https://www.aashirvaad.com/images/packet-1.png"
-            },
-            ]
+          productData: [],
         }
+    },
+    created() {
+        axios
+        .get('https://partnerpincode.herokuapp.com/apiv1/slider')
+        .then(response => {
+            this.productData = response.data.productDefinitions;
+            console.log(response.data.productDefinitions)
+        });
     },
     methods: {
 

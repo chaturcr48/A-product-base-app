@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-app-bar flat color="white">
-            <v-btn icon>
+            <v-btn icon v-on:click="back()">
                 <v-icon>mdi-chevron-left</v-icon>
             </v-btn>
             <v-flex>
@@ -95,6 +95,9 @@ import axios from "axios";
        notFound:[]
     }),
     methods:{
+        back(){
+            this.$router.back(-1);
+        },
         async submitPin(){
             let data= await axios
                 .get(`https://partnerpincode.herokuapp.com/api/${this.pincode}`)
@@ -107,6 +110,7 @@ import axios from "axios";
                     }
                 });
         this.partnerData=data;
+        console.log(data)
         }
     }
 }

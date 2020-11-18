@@ -1,8 +1,9 @@
 <template>
+  <div>
   <v-card
     class="mx-auto overflow-hidden"
-    height="600"
-    width="344"
+    height=""
+    width=""
   >
 
     <v-app-bar
@@ -21,6 +22,7 @@
       <v-btn
         small
         color="#6a1b9a"
+        v-on:click="partnerRoute(index)"
       >
         SELECT PARTNER
       </v-btn>
@@ -37,8 +39,6 @@
       <v-list
         nav
         dense
-
-
       >
         <v-list-item-group
           v-model="group"
@@ -67,9 +67,10 @@
 
                 </v-list-item>
                 <v-divider color="#963ACE"></v-divider>
-          <v-list-item v-for="item in appNavigation" :key="item.name">
+          <v-list-item v-for="(item,index) in appNavigation" :key="item.name" v-on:click="navigationRoute(index)">
             <v-list-item-title 
               class="pt-n4 pb-n4 white--text font-weight-light"
+              
             >
             <v-list-item-avatar>
               <v-icon size="25"
@@ -85,18 +86,42 @@
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
-
-    
+    <div>
+      <div>
+        
+        <BuyAgain></BuyAgain> 
+      </div>
+      <div>
+        <ProductSlider></ProductSlider> 
+      </div>
+      <div>  
+        <MyWishlist></MyWishlist>
+      </div>
+    </div>
   </v-card>
+  
+  </div>
+
+
 </template>
 
+
+
 <script>
+import BuyAgain from "./BuyAgain";
+import MyWishlist from "./MyWishlist";
+import ProductSlider from "./ProductSlider";
   export default {
+     components: {
+        BuyAgain,
+        ProductSlider,
+        MyWishlist
+      },
     data: () => ({
       drawer: false,
       group: null,
       user:{
-        name:"Aniket",
+        name:"User",
         image:"@/assets/boy.png",
         isLoggedIn:'true'
       },
@@ -113,7 +138,8 @@
         },
          {
           name:"Categories",
-          icon:"mdi-tshirt-crew-outline"
+          icon:"mdi-tshirt-crew-outline",
+          route: ""
 
         },
          {
@@ -130,12 +156,29 @@
           name:"Search",
           icon:"mdi-magnify"
         },
-         {
+        {
+          name:"Product Request",
+          icon:"mdi-near-me"
+        },
+        {
+          name:"Contact Partner",
+          icon:"mdi-phone"
+        },
+        {
+          name:"Zip Form",
+          icon:"mdi-mail"
+        },
+        {
+          name:"Screenshot Share",
+          icon:"mdi-fullscreen"
+        },
+        {
           name:"Sign Out",
           icon:"mdi-login"
 
-        },
-      ]
+        }
+      ],
+      routeIndex: [],
     }),
 
     watch: {
@@ -144,9 +187,34 @@
       },
   
     },
-    methods:{
-
-    }
+    methods: {
+      navigationRoute(passedIndex) {
+        console.log(passedIndex);
+        this.routeIndex = this.appNavigation[passedIndex];
+        console.log(this.routeIndex)
+        if(passedIndex == 1){
+          this.$router.push('/category')
+        }
+        else if(passedIndex == 4){
+          this.$router.push('/searchpage')
+        }
+         else if(passedIndex == 5){
+          this.$router.push('/form')
+        }
+        else if(passedIndex == 6){
+          this.$router.push('/contactpartner')
+        }
+        else if(passedIndex == 7){
+          this.$router.push('/zipcode')
+        }
+        else if(passedIndex==8){
+          this.$router.push("/screenshotShare")
+        }
+      },
+      partnerRoute(){
+        this.$router.push('/partnerpincode')
+      }
+  },
   }
 </script>
 
