@@ -444,7 +444,7 @@
   background-color: rgba(100, 148, 237, 0.144);
 }
 .setWidth{
-    width:200px;
+    width:100vw;
 }
 
 </style>

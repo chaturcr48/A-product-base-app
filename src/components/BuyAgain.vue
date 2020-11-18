@@ -10,7 +10,7 @@
         </v-card>
         <v-card class="mt-n2" elevation="0" tile color='#fff0da'
            v-for="(product, index) in productData" v-bind:key="product.id"> 
-            <template v-if="index < 2">
+            <template v-if="index < 2" class="product">
             <v-btn class="ml-n2 white--text font-weight-regular" color="#fca219" elevation="0" depressed
                 small fab rounded absolute left>Rs {{product.discountAmount}}<br/>off</v-btn>
             <v-list-item three-line>
@@ -118,6 +118,7 @@
 
 <script>
 import axios from 'axios';
+// import html2canvas from "html2canvas";
 export default {
     name: 'BuyAgain',
     data() {

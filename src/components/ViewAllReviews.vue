@@ -25,7 +25,7 @@
                             :color="color.green"
                             width="50"
                             height="25"
-                            class="rounded-lg font-weight-bold float-left white--text pl-1"
+                            class="rounded-lg font-weight-bold float-left white--text pl-1 ml-4"
                     >
                         <p
                             class="ml-1 text-center float-left"
@@ -83,7 +83,7 @@ export default {
 
 <style scoped>
 .setWidth{
-    width:200px;
+    width:100vw;
 }
 
 </style>
