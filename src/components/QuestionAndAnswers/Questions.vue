@@ -28,20 +28,20 @@
         <v-card flat tile>
           <v-window v-model="onboarding" vertical>
             <v-window-item
-              v-for="(question, index) in QuestionsArray"
+              v-for="(question, index) in QuestionsArray.slice(1)"
               :key="index"
             >
               <v-card>
                 <v-card-title class="pb-0"
-                  >{{ index + 1 }}) {{ question.question }}</v-card-title
+                  >{{ index + 1 }}) {{ question['A'] }}</v-card-title
                 >
                 <v-card-text class="pb-0">
                   <v-radio-group v-model="question.answerSelected">
                     <v-radio
                       @click="showValue(options, index)"
-                      v-for="(options, index) in question.optionsArray"
+                      v-for="(options, index) in QuestionsArray.slice(2)"
                       :key="index"
-                      :label="options"
+                      :label="options[index]"
                       :value="options"
                       color="purple"
                     ></v-radio>
@@ -106,6 +106,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Questions",
   data() {
@@ -115,68 +116,69 @@ export default {
       getSeconds: 0,
       secondsCountdown: "",
       showQuestions: true,
-      QuestionsArray: [
-        {
-          question: "1+1= ?",
-          optionsArray: ["2", "3", "4", "5"],
-          answerSelected: "",
-          correctAnswer: "2",
-        },
-        {
-          question: "1+2= ?",
-          optionsArray: ["2", "3", "4", "5"],
-          answerSelected: "",
-          correctAnswer: "3",
-        },
-        {
-          question: "1+3= ?",
-          optionsArray: ["2", "3", "4", "5"],
-          answerSelected: "",
-          correctAnswer: "4",
-        },
-        {
-          question: "1+4= ?",
-          optionsArray: ["2", "3", "4", "5"],
-          answerSelected: "",
-          correctAnswer: "5",
-        },
-        {
-          question: "1+1= ?",
-          optionsArray: ["2", "3", "4", "5"],
-          answerSelected: "",
-          correctAnswer: "2",
-        },
-        {
-          question: "1+2= ?",
-          optionsArray: ["2", "3", "4", "5"],
-          answerSelected: "",
-          correctAnswer: "3",
-        },
-        {
-          question: "1+3= ?",
-          optionsArray: ["2", "3", "4", "5"],
-          answerSelected: "",
-          correctAnswer: "4",
-        },
-        {
-          question: "1+4= ?",
-          optionsArray: ["2", "3", "4", "5"],
-          answerSelected: "",
-          correctAnswer: "5",
-        },
-        {
-          question: "1+1= ?",
-          optionsArray: ["2", "3", "4", "5"],
-          answerSelected: "",
-          correctAnswer: "2",
-        },
-        {
-          question: "1+2= ?",
-          optionsArray: ["2", "3", "4", "5"],
-          answerSelected: "",
-          correctAnswer: "3",
-        },
-      ],
+      // QuestionsArray: [
+      //   {
+      //     question: "1+1= ?",
+      //     optionsArray: ["2", "3", "4", "5"],
+      //     answerSelected: "",
+      //     correctAnswer: "2",
+      //   },
+      //   {
+      //     question: "1+2= ?",
+      //     optionsArray: ["2", "3", "4", "5"],
+      //     answerSelected: "",
+      //     correctAnswer: "3",
+      //   },
+      //   {
+      //     question: "1+3= ?",
+      //     optionsArray: ["2", "3", "4", "5"],
+      //     answerSelected: "",
+      //     correctAnswer: "4",
+      //   },
+      //   {
+      //     question: "1+4= ?",
+      //     optionsArray: ["2", "3", "4", "5"],
+      //     answerSelected: "",
+      //     correctAnswer: "5",
+      //   },
+      //   {
+      //     question: "1+1= ?",
+      //     optionsArray: ["2", "3", "4", "5"],
+      //     answerSelected: "",
+      //     correctAnswer: "2",
+      //   },
+      //   {
+      //     question: "1+2= ?",
+      //     optionsArray: ["2", "3", "4", "5"],
+      //     answerSelected: "",
+      //     correctAnswer: "3",
+      //   },
+      //   {
+      //     question: "1+3= ?",
+      //     optionsArray: ["2", "3", "4", "5"],
+      //     answerSelected: "",
+      //     correctAnswer: "4",
+      //   },
+      //   {
+      //     question: "1+4= ?",
+      //     optionsArray: ["2", "3", "4", "5"],
+      //     answerSelected: "",
+      //     correctAnswer: "5",
+      //   },
+      //   {
+      //     question: "1+1= ?",
+      //     optionsArray: ["2", "3", "4", "5"],
+      //     answerSelected: "",
+      //     correctAnswer: "2",
+      //   },
+      //   {
+      //     question: "1+2= ?",
+      //     optionsArray: ["2", "3", "4", "5"],
+      //     answerSelected: "",
+      //     correctAnswer: "3",
+      //   },
+      // ],
+      QuestionsArray:[],
       score: 0,
       onboarding: 0,
       length: 10,
@@ -214,6 +216,13 @@ export default {
       });
       this.showQuestions = false;
     },
+    getQuestions: async function(){
+      let questions=await axios.get("https://frendy-quiz-app.herokuapp.com/");
+      for(let question of questions.data){
+        this.QuestionsArray.push(question);
+      }
+      console.log(this.QuestionsArray);
+    }
   },
   mounted() {
     setInterval(() => {
@@ -225,5 +234,8 @@ export default {
       this.getSeconds++;
     }, 1000);
   },
+  created(){
+    this.getQuestions();
+  }
 };
 </script>
