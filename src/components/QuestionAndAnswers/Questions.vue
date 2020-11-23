@@ -46,6 +46,11 @@
                       color="purple"
                     ></v-radio>
                   </v-radio-group>
+                  <div v-if="question.answerSelected">
+                    Correct Answer:{{ question.correctAnswer }}
+                    <br />
+                    Your Answer:{{ question.answerSelected }}
+                  </div>
                 </v-card-text>
               </v-card>
               <v-container class="text-center" v-show="index == 9">
