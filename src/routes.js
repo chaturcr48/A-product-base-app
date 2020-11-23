@@ -17,6 +17,7 @@ import Zipcode from "./components/Zipcode";
 import Login from "./components/Login";
 import ScreenShotShare from "./components/ScreenshotShare";
 import MultipleProductsShare from "./components/MultipleProductsShare";
+import Questions from "./components/QuestionAndAnswers/Questions";
 
 export const routes = [
   { path: "/", component: AppNavigation },
@@ -38,4 +39,5 @@ export const routes = [
   { path: "/login", component: Login },
   { path: "/screenshotShare", component: ScreenShotShare },
   { path: "/shareMultipleProducts", component: MultipleProductsShare },
+  { path: "/QnAs_questions", component: Questions },
 ];
