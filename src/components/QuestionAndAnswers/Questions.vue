@@ -28,26 +28,26 @@
         <v-card flat tile>
           <v-window v-model="onboarding" vertical>
             <v-window-item
-              v-for="(question, index) in QuestionsArray.slice(1)"
+              v-for="(question, index) in QuestionsArrayNew"
               :key="index"
             >
               <v-card>
                 <v-card-title class="pb-0"
-                  >{{ index + 1 }}) {{ question['A'] }}</v-card-title
+                  >{{ index + 1 }}) {{ question.A }}</v-card-title
                 >
                 <v-card-text class="pb-0">
                   <v-radio-group v-model="question.answerSelected">
                     <v-radio
                       @click="showValue(options, index)"
-                      v-for="(options, index) in QuestionsArray.slice(2)"
-                      :key="index"
-                      :label="options[index]"
-                      :value="options"
+                      v-for="(options, indexOptions) in optionsArray"
+                      :key="indexOptions"
+                      :label="question[options]"
+                      :value="question[options]"
                       color="purple"
                     ></v-radio>
                   </v-radio-group>
                   <div v-if="question.answerSelected">
-                    Correct Answer:{{ question.correctAnswer }}
+                    Correct Answer:{{ question.B }}
                     <br />
                     Your Answer:{{ question.answerSelected }}
                   </div>
@@ -183,10 +183,12 @@ export default {
       //     correctAnswer: "3",
       //   },
       // ],
-      QuestionsArray:[],
+      QuestionsArray: [],
+      QuestionsArrayNew: [],
+      optionsArray: ["C", "D", "E", "F"],
       score: 0,
       onboarding: 0,
-      length: 10,
+      length: 4,
     };
   },
   methods: {
@@ -221,13 +223,19 @@ export default {
       });
       this.showQuestions = false;
     },
-    getQuestions: async function(){
-      let questions=await axios.get("https://frendy-quiz-app.herokuapp.com/");
-      for(let question of questions.data){
+    getQuestions: async function() {
+      let questions = await axios.get("https://frendy-quiz-app.herokuapp.com/");
+      for (let question of questions.data) {
         this.QuestionsArray.push(question);
       }
-      console.log(this.QuestionsArray);
-    }
+      this.QuestionsArray.map((question, index) => {
+        if (index !== 0) {
+          this.QuestionsArrayNew.push(question);
+        }
+      });
+      console.log(this.QuestionsArrayNew);
+      //   console.log(this.QuestionsArray);
+    },
   },
   mounted() {
     setInterval(() => {
@@ -239,8 +247,8 @@ export default {
       this.getSeconds++;
     }, 1000);
   },
-  created(){
+  created() {
     this.getQuestions();
-  }
+  },
 };
 </script>
