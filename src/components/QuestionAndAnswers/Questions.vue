@@ -41,8 +41,8 @@
                       @click="showValue(options, index)"
                       v-for="(options, indexOptions) in optionsArray"
                       :key="indexOptions"
-                      :label="question[options]"
-                      :value="question[options]"
+                      :label="String(question[options])"
+                      :value="String(question[options])"
                       color="purple"
                     ></v-radio>
                   </v-radio-group>
