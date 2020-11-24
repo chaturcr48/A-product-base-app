@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <BuyAgain />
+      <Header />
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
@@ -10,13 +10,13 @@
 </template>
 
 <script>
-import BuyAgain from "./components/BuyAgain";
+import Header from "./components/Header";
 
 export default {
   name: "App",
 
   components: {
-    BuyAgain,
+    Header,
   },
 
   data: () => ({
