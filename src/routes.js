@@ -20,6 +20,7 @@ import MultipleProductsShare from "./components/MultipleProductsShare";
 import Questions from "./components/QuestionAndAnswers/Questions";
 import MyCart from "./components/My-Cart";
 import EmptyCart from "./components/EmptyCart";
+import LoginForQuiz from "./components/QuestionAndAnswers/LoginScreen.vue";
 
 export const routes = [
   { path: "/", component: AppNavigation },
@@ -44,4 +45,5 @@ export const routes = [
   { path: "/QnAs_questions", component: Questions },
   { path: "/MyCart", component: MyCart },
   { path: "/EmptyCart", component: EmptyCart },
+  { path: "/loginForQuiz", component: LoginForQuiz },
 ];

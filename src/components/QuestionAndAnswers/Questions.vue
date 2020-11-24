@@ -41,8 +41,8 @@
                       @click="showValue(options, index)"
                       v-for="(options, indexOptions) in optionsArray"
                       :key="indexOptions"
-                      :label="question[options]"
-                      :value="question[options]"
+                      :label="String(question[options])"
+                      :value="String(question[options])"
                       color="purple"
                     ></v-radio>
                   </v-radio-group>
@@ -53,43 +53,32 @@
                   </div>
                 </v-card-text>
               </v-card>
-              <v-container class="text-center" v-show="index == 9">
-                <v-btn
-                  class="text-center white--text"
-                  color="purple"
-                  block
-                  @click="checkScore"
-                >
-                  Submit Test</v-btn
-                >
-              </v-container>
             </v-window-item>
           </v-window>
 
           <v-card-actions class="justify-space-between">
-            <v-btn
-              text
-              @click="prev"
-              class="yellow white-
-            text"
-            >
-              Previous
-            </v-btn>
             <v-item-group v-model="onboarding" class="text-center" mandatory>
-              <v-item v-for="n in length" :key="n" v-slot="{ active, toggle }">
-                <v-btn
-                  :input-value="active"
-                  icon
-                  @click="toggle"
-                  color="purple"
-                >
+              <v-item v-for="n in length" :key="n" v-slot="{ active }">
+                <v-btn :input-value="active" icon color="purple">
                   <v-icon>mdi-numeric-{{ n }}-box</v-icon>
                 </v-btn>
               </v-item>
             </v-item-group>
-            <v-btn text @click="next" class="green white--text">
-              Next
-            </v-btn>
+            <div v-if="currentQuestion === 4">
+              <v-btn
+                class="text-center white--text"
+                color="purple"
+                block
+                @click="checkScore"
+              >
+                Submit Test</v-btn
+              >
+            </div>
+            <div v-else>
+              <v-btn text @click="next" class="green white--text">
+                {{ currentQuestion === 4 ? "Submit Test" : "Next" }}
+              </v-btn>
+            </div>
           </v-card-actions>
         </v-card>
       </div>
@@ -186,9 +175,14 @@ export default {
       QuestionsArray: [],
       QuestionsArrayNew: [],
       optionsArray: ["C", "D", "E", "F"],
+      answerDetails: {
+        name: "",
+        mobileNumber: "",
+      },
       score: 0,
       onboarding: 0,
       length: 4,
+      currentQuestion: 0,
     };
   },
   methods: {
@@ -209,19 +203,26 @@ export default {
       }
     },
     showValue(answerSelected, answerIndex) {
-      this.QuestionsArray.map((questions, index) => {
+      this.QuestionsArrayNew.map((questions, index) => {
         if (index === answerIndex) {
           questions.answerSelected === answerSelected;
+          let newQuestion = questions.A;
+          this.answerDetails[`${newQuestion}`] = questions.answerSelected;
         }
       });
+      this.currentQuestion++;
+      console.log(this.answerDetails);
     },
-    checkScore() {
-      this.QuestionsArray.map((questions) => {
-        if (questions.correctAnswer === questions.answerSelected) {
+    checkScore: async function() {
+      this.QuestionsArrayNew.map((questions) => {
+        if (questions.B == questions.answerSelected) {
           this.score++;
         }
       });
       this.showQuestions = false;
+      await this.getLoginDetails();
+      console.log(this.answerDetails);
+      this.submitAnswers();
     },
     getQuestions: async function() {
       let questions = await axios.get("https://frendy-quiz-app.herokuapp.com/");
@@ -236,6 +237,20 @@ export default {
       console.log(this.QuestionsArrayNew);
       //   console.log(this.QuestionsArray);
     },
+    getLoginDetails: function() {
+      this.$root.$on("loginDetails", (name, number) => {
+        console.log(name, number);
+        this.answerDetails.name = name;
+        this.answerDetails.mobileNumber = number;
+      });
+    },
+    submitAnswers: async function() {
+      let response = await axios.post(
+        "https://frendy-quiz-app.herokuapp.com/answer/submit",
+        { data: this.answerDetails }
+      );
+      console.log(response);
+    },
   },
   mounted() {
     setInterval(() => {
@@ -246,6 +261,7 @@ export default {
       }
       this.getSeconds++;
     }, 1000);
+    this.getLoginDetails();
   },
   created() {
     this.getQuestions();
