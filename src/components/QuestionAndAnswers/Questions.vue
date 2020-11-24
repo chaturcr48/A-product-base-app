@@ -53,7 +53,7 @@
                   </div>
                 </v-card-text>
               </v-card>
-              <v-container class="text-center" v-show="index == 9">
+              <v-container class="text-center" v-show="index == 3">
                 <v-btn
                   class="text-center white--text"
                   color="purple"
@@ -186,6 +186,10 @@ export default {
       QuestionsArray: [],
       QuestionsArrayNew: [],
       optionsArray: ["C", "D", "E", "F"],
+      answerDetails:{
+        name:'',
+        mobileNumber:''
+      },
       score: 0,
       onboarding: 0,
       length: 4,
@@ -209,19 +213,25 @@ export default {
       }
     },
     showValue(answerSelected, answerIndex) {
-      this.QuestionsArray.map((questions, index) => {
+      this.QuestionsArrayNew.map((questions, index) => {
         if (index === answerIndex) {
           questions.answerSelected === answerSelected;
+          let newQuestion=questions.A;
+          this.answerDetails[`${newQuestion}`]=questions.answerSelected;
         }
       });
+      console.log(this.answerDetails);
     },
-    checkScore() {
-      this.QuestionsArray.map((questions) => {
-        if (questions.correctAnswer === questions.answerSelected) {
+    checkScore : async function() {
+      this.QuestionsArrayNew.map((questions) => {
+        if (questions.B == questions.answerSelected) {
           this.score++;
         }
       });
       this.showQuestions = false;
+      await this.getLoginDetails();
+      console.log(this.answerDetails);
+      this.submitAnswers();
     },
     getQuestions: async function() {
       let questions = await axios.get("https://frendy-quiz-app.herokuapp.com/");
@@ -236,6 +246,17 @@ export default {
       console.log(this.QuestionsArrayNew);
       //   console.log(this.QuestionsArray);
     },
+    getLoginDetails:function(){
+      this.$root.$on("loginDetails",(name,number)=>{
+        console.log(name,number);
+        this.answerDetails.name=name;
+        this.answerDetails.mobileNumber=number;
+      })
+    },
+    submitAnswers:async function(){
+      let response= await axios.post("https://frendy-quiz-app.herokuapp.com/answer/submit",{data:this.answerDetails});
+      console.log(response);
+    }
   },
   mounted() {
     setInterval(() => {
@@ -246,6 +267,7 @@ export default {
       }
       this.getSeconds++;
     }, 1000);
+    this.getLoginDetails();
   },
   created() {
     this.getQuestions();
