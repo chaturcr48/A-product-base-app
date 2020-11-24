@@ -86,8 +86,8 @@
     <div class="text-center" v-else>
       <v-overlay>
         <v-card color="purple white--text">
-          <v-card-title>Time is Over !</v-card-title>
-          <v-card-text>Your score is : {{ score }}/10</v-card-text>
+          <v-card-title>{{ popup.mainLine }}</v-card-title>
+          <v-card-text>{{ popup.multipleLine }}</v-card-text>
           <v-card-subtitle class="pt-0"
             ><v-btn block class="text-center purple--text pt-0" color="white"
               >Thank You!</v-btn
@@ -108,6 +108,7 @@ export default {
       getMinutes: 1,
       minutesCountdown: "",
       getSeconds: 0,
+      popup: {},
       secondsCountdown: "",
       showQuestions: true,
       // QuestionsArray: [
@@ -220,6 +221,8 @@ export default {
         }
       });
       this.showQuestions = false;
+      this.popup.mainline = "Thanks for submitting";
+      this.popup.multipleLine = `Your score is ${this.score}/10`;
       await this.getLoginDetails();
       console.log(this.answerDetails);
       this.submitAnswers();
