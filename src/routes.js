@@ -18,7 +18,8 @@ import Login from "./components/Login";
 import ScreenShotShare from "./components/ScreenshotShare";
 import MultipleProductsShare from "./components/MultipleProductsShare";
 import Questions from "./components/QuestionAndAnswers/Questions";
-import LoginForQuiz from "./components/QuestionAndAnswers/LoginScreen.vue"
+import EmptyCart from "./components/EmptyCart";
+import LoginForQuiz from "./components/QuestionAndAnswers/LoginScreen.vue";
 
 export const routes = [
   { path: "/", component: AppNavigation },
@@ -41,5 +42,6 @@ export const routes = [
   { path: "/screenshotShare", component: ScreenShotShare },
   { path: "/shareMultipleProducts", component: MultipleProductsShare },
   { path: "/QnAs_questions", component: Questions },
-  {path:"/loginForQuiz",component:LoginForQuiz}
+  { path: "/EmptyCart", component: EmptyCart },
+  { path: "/loginForQuiz", component: LoginForQuiz },
 ];
