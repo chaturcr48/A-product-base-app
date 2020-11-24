@@ -229,12 +229,19 @@ export default {
           this.score++;
         }
       });
+      let response= await this.submitAnswers();
+      console.log(response);
+            if(response===402){
+        this.popup.mainLine="Can't Submit because you have already submitted";
+        this.popup.multipleLine="Try Again Later";
+      }
+      else{
+              this.popup.mainLine="Thanks for submitting";
+              this.popup.multipleLine=`Your score is ${this.score}/10`;
+      }
       this.showQuestions = false;
-      this.popup.mainline="Thanks for submitting";
-      this.popup.multipleLine=`Your score is ${this.score}/10`;
       await this.getLoginDetails();
       console.log(this.answerDetails);
-      this.submitAnswers();
     },
     getQuestions: async function() {
       let questions = await axios.get("https://frendy-quiz-app.herokuapp.com/");
@@ -258,11 +265,9 @@ export default {
     },
     submitAnswers:async function(){
       let response= await axios.post("https://frendy-quiz-app.herokuapp.com/answer/submit",{data:this.answerDetails});
-      if(response.data.status=="Can't Submit because you have already submitted"){
-        this.popup.mainLine="Can't Submit because you have already submitted";
-        this.popup.multipleLine="Try Again Later";
-      }
-      console.log(response);
+      return response.data.status;
+
+      // console.log(response);
     }
   },
   mounted() {
