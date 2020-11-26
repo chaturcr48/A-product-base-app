@@ -15,7 +15,36 @@
           </v-row>
         </v-img>
       </v-card>
-    </v-row>
+        <v-card-actions>
+          <v-btn color="orange lighten-2" text>Rules of the game </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn icon @click="show = !show">
+            <v-icon>{{ show ? "mdi-chevron-up" : "mdi-chevron-down" }}</v-icon>
+          </v-btn>
+        </v-card-actions>
+        <v-expand-transition>
+          <div v-show="show">
+            <v-divider></v-divider>
+
+            <v-card-text>
+              <ul>
+                <li>write here rules of the game.</li>
+                <li>write here rules of the game.</li>
+                <li>write here rules of the game.</li>
+                <li>write here rules of the game.</li>
+                <li>write here rules of the game.</li>
+                <li>write here rules of the game.</li>
+                <li>write here rules of the game.</li>
+                <li>write here rules of the game.</li>
+                <li>write here rules of the game.</li>
+                <li>write here rules of the game.</li>
+                <li>write here rules of the game.</li>
+              </ul>
+            </v-card-text>
+          </div>
+        </v-expand-transition>
+      </v-row>
+
     <v-row justify="space-around" class="mt-3">
       <v-card width="400">
         <v-img
@@ -27,7 +56,9 @@
             <h1 class="white--text">Next Quiz will start in</h1>
           </v-row>
           <v-row>
-            <span class="base-timer white--text ma-auto">{{ formattedTimeLeft }}</span>
+            <span class="base-timer white--text ma-auto">{{
+              formattedTimeLeft
+            }}</span>
           </v-row>
         </v-img>
       </v-card>
@@ -111,6 +142,7 @@ export default {
   },
 };
 </script>
+
 
 <style scoped lang="scss">
 .base-timer {
