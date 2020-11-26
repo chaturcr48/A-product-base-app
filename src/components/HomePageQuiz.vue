@@ -11,7 +11,7 @@
             Here you can earn money by simply giving answers of few questions.
           </v-card-subtitle>
           <v-row class="ml-4">
-            <v-btn> Start Quiz</v-btn>
+            <v-btn @click="startQuiz()"> Start Quiz</v-btn>
           </v-row>
         </v-img>
       </v-card>
@@ -89,6 +89,7 @@ export default {
     return {
       timePassed: 0,
       timerInterval: null,
+      show:false
     };
   },
 
@@ -139,6 +140,10 @@ export default {
     startTimer() {
       this.timerInterval = setInterval(() => (this.timePassed += 1), 1000);
     },
+    startQuiz(){
+      this.$router.push("/loginForQuiz");
+
+    }
   },
 };
 </script>
