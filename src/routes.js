@@ -20,6 +20,8 @@ import MultipleProductsShare from "./components/MultipleProductsShare";
 import Questions from "./components/QuestionAndAnswers/Questions";
 import EmptyCart from "./components/EmptyCart";
 import LoginForQuiz from "./components/QuestionAndAnswers/LoginScreen.vue";
+import SearchResultsPage from "./components/SearchResultsPage";
+import ProfilePage from "./components/Profile-Page";
 
 export const routes = [
   { path: "/", component: AppNavigation },
@@ -44,4 +46,6 @@ export const routes = [
   { path: "/QnAs_questions", component: Questions },
   { path: "/EmptyCart", component: EmptyCart },
   { path: "/loginForQuiz", component: LoginForQuiz },
+  { path: "/SearchResultsPage", component: SearchResultsPage },
+  { path: "/profilePage", component: ProfilePage },
 ];

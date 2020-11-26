@@ -138,13 +138,13 @@ export default {
       overlay: false,
       imagesArray: [
         {
-          src: ("https://www.aashirvaad.com/assets/Aashirvaad/images/packet-2-left.png"),
+          src: "https://cdn2staging.frendy.in/products/frendy5f591ad457834.jpg",
         },
         {
-          src: ("https://www.aashirvaad.com/assets/Aashirvaad/images/packet-2-left.png"),
+          src: "https://cdn2staging.frendy.in/products/frendy5f591ad457834.jpg",
         },
         {
-          src: ("https://www.aashirvaad.com/assets/Aashirvaad/images/packet-2-left.png"),
+          src: "https://cdn2staging.frendy.in/products/frendy5f591ad457834.jpg",
         },
       ],
     };
@@ -153,9 +153,9 @@ export default {
     imgClicked() {
       this.overlay = !this.overlay;
     },
-    back(){
+    back() {
       this.$router.back(-1);
-    }
+    },
   },
 };
 </script>
