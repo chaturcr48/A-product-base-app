@@ -100,7 +100,7 @@
   export default {
     name: 'OrderSummary',
     data:()=>({
-      orderStatus:2,
+      orderStatus:3,
       statusArray:[
     {
         status:"Ordered",
