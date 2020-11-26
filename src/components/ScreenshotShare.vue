@@ -26,7 +26,7 @@
                 height="35"
                 width="35"
                 class="float-right mr-2 mt-n15"
-                @click="takeShot()"
+                @click="shareDetailsOnWhatsApp()"
               ></v-img>
                         </ShareNetwork>
 

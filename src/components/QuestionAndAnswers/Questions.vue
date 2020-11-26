@@ -1,25 +1,13 @@
 <template>
   <div>
     <div v-if="showQuestions">
-      <v-toolbar color="purple white--text" prominent>
+      <v-toolbar color="purple white--text">
         <v-toolbar-title>
           <v-row class="pb-0">
             <v-col cols="12">
-              Countdown Timer:
-            </v-col>
-          </v-row>
-          <v-row class="text-caption pt-0">
-            <v-col cols="4">
-              Minutes Remaining:
-            </v-col>
-            <v-col cols="2">
-              {{ " " + minutesCountdown }}
-            </v-col>
-            <v-col cols="4">
-              Seconds Remaining:
-            </v-col>
-            <v-col cols="2">
-              {{ " " + secondsCountdown }}
+              Countdown Timer:{{
+                " " + minutesCountdown + ":" + secondsCountdown
+              }}
             </v-col>
           </v-row>
         </v-toolbar-title>
@@ -47,9 +35,19 @@
                     ></v-radio>
                   </v-radio-group>
                   <div v-if="question.answerSelected">
-                    Correct Answer:{{ question.B }}
-                    <br />
-                    Your Answer:{{ question.answerSelected }}
+                    Your answer is :{{
+                      question.answerSelected === question.B
+                        ? "Correct "
+                        : "Wrong"
+                    }}
+                    <div>
+                      <div class="green--text">
+                        Correct Answer:{{ question.B }}
+                      </div>
+                      <div class="yellow--text">
+                        Your Answer:{{ question.answerSelected }}
+                      </div>
+                    </div>
                   </div>
                 </v-card-text>
               </v-card>
@@ -111,68 +109,6 @@ export default {
       popup: {},
       secondsCountdown: "",
       showQuestions: true,
-      // QuestionsArray: [
-      //   {
-      //     question: "1+1= ?",
-      //     optionsArray: ["2", "3", "4", "5"],
-      //     answerSelected: "",
-      //     correctAnswer: "2",
-      //   },
-      //   {
-      //     question: "1+2= ?",
-      //     optionsArray: ["2", "3", "4", "5"],
-      //     answerSelected: "",
-      //     correctAnswer: "3",
-      //   },
-      //   {
-      //     question: "1+3= ?",
-      //     optionsArray: ["2", "3", "4", "5"],
-      //     answerSelected: "",
-      //     correctAnswer: "4",
-      //   },
-      //   {
-      //     question: "1+4= ?",
-      //     optionsArray: ["2", "3", "4", "5"],
-      //     answerSelected: "",
-      //     correctAnswer: "5",
-      //   },
-      //   {
-      //     question: "1+1= ?",
-      //     optionsArray: ["2", "3", "4", "5"],
-      //     answerSelected: "",
-      //     correctAnswer: "2",
-      //   },
-      //   {
-      //     question: "1+2= ?",
-      //     optionsArray: ["2", "3", "4", "5"],
-      //     answerSelected: "",
-      //     correctAnswer: "3",
-      //   },
-      //   {
-      //     question: "1+3= ?",
-      //     optionsArray: ["2", "3", "4", "5"],
-      //     answerSelected: "",
-      //     correctAnswer: "4",
-      //   },
-      //   {
-      //     question: "1+4= ?",
-      //     optionsArray: ["2", "3", "4", "5"],
-      //     answerSelected: "",
-      //     correctAnswer: "5",
-      //   },
-      //   {
-      //     question: "1+1= ?",
-      //     optionsArray: ["2", "3", "4", "5"],
-      //     answerSelected: "",
-      //     correctAnswer: "2",
-      //   },
-      //   {
-      //     question: "1+2= ?",
-      //     optionsArray: ["2", "3", "4", "5"],
-      //     answerSelected: "",
-      //     correctAnswer: "3",
-      //   },
-      // ],
       QuestionsArray: [],
       QuestionsArrayNew: [],
       optionsArray: ["C", "D", "E", "F"],
@@ -220,15 +156,14 @@ export default {
           this.score++;
         }
       });
-      let response= await this.submitAnswers();
+      let response = await this.submitAnswers();
       console.log(response);
-            if(response===402){
-        this.popup.mainLine="Can't Submit because you have already submitted";
-        this.popup.multipleLine="Try Again Later";
-      }
-      else{
-              this.popup.mainLine="Thanks for submitting";
-              this.popup.multipleLine=`Your score is ${this.score}/10`;
+      if (response === 402) {
+        this.popup.mainLine = "Can't Submit because you have already submitted";
+        this.popup.multipleLine = "Try Again Later";
+      } else {
+        this.popup.mainLine = "Thanks for submitting";
+        this.popup.multipleLine = `Your score is ${this.score}/10`;
       }
       this.showQuestions = false;
       await this.getLoginDetails();
@@ -254,12 +189,15 @@ export default {
         this.answerDetails.mobileNumber = number;
       });
     },
-    submitAnswers:async function(){
-      let response= await axios.post("https://frendy-quiz-app.herokuapp.com/answer/submit",{data:this.answerDetails});
+    submitAnswers: async function() {
+      let response = await axios.post(
+        "https://frendy-quiz-app.herokuapp.com/answer/submit",
+        { data: this.answerDetails }
+      );
       return response.data.status;
 
       // console.log(response);
-    }
+    },
   },
   mounted() {
     setInterval(() => {
