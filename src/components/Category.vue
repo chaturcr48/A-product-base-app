@@ -6,13 +6,8 @@
         <v-toolbar-title align="center">Categories</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn icon>
-<<<<<<< HEAD
-          <v-icon>mdi-cart</v-icon>
-        </v-btn>
-=======
           <v-icon v-on:click="goToCart()">mdi-cart</v-icon>
-        </v-btn>    
->>>>>>> 2b5db6326d9fbdfb5806725ccd7f1afbb979afe3
+        </v-btn>
       </v-app-bar>
       <div align="center" class="search_div mt-n4">
         <v-text-field
@@ -109,7 +104,6 @@ export default {
         // console.log(res.data.Categories);
       });
   },
-<<<<<<< HEAD
   mounted() {
     this.fromSearchPage();
   },
@@ -134,15 +128,6 @@ export default {
     },
   },
 };
-=======
-
-    methods: {
-        goToCart() {
-        this.$router.push("/cart");
-        } 
-       }
-}
->>>>>>> 2b5db6326d9fbdfb5806725ccd7f1afbb979afe3
 </script>
 
 <style>
