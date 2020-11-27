@@ -34,10 +34,10 @@
                 <v-row
                   align="center"
                   class="mx-0 text-subtitle-1 font-weight-medium"
-                  v-for="trendingItem in trendingItems"
+                  v-for="(trendingItem, index) in trendingItems"
                   :key="trendingItem"
                 >
-                  <p class="ma-0" @click="goToProducts">
+                  <p class="ma-0" @click="goToProducts(index)">
                     {{ trendingItem }}
                   </p>
                 </v-row>
@@ -80,7 +80,7 @@ export default {
   name: "SearchPage",
   data() {
     return {
-      items: ["Aata & Flour", "Noodles", "Groceries", "Health Care"],
+      items: ["Aata & Flour"],
       trendingItems: [
         "Atta & Floors",
         "Rice and other Grains",
@@ -88,11 +88,19 @@ export default {
         "Sugar",
         "Tea & Coffee",
       ],
+      index: "",
     };
   },
   methods: {
-    goToProducts() {
-      this.$router.push("/productdetails");
+    sendIndex() {
+      this.$root.$emit("showSpecificCategory", this.index);
+      // console.log(this.index);
+    },
+    goToProducts(index) {
+      this.$router.push("/category");
+      // console.log(index);
+      this.index = index;
+      this.sendIndex();
     },
   },
 };
