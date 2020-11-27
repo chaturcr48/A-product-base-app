@@ -15,7 +15,7 @@
       <v-navigation-drawer
         v-model="drawer"
         :color="color.purple"
-        absolute
+        fixed
         temporary
       >
         <v-list nav dense>
@@ -151,9 +151,29 @@ export default {
         icon: "mdi-fullscreen",
       },
       {
+        name:"Order Summary",
+        icon:"mdi-truck-delivery"
+      },
+      {
+        name:"Multiple Product Share",
+        icon:"mdi-share-variant"
+      },
+      {
+        name:"Rate A Product",
+        icon:"mdi-star-half"
+      },
+      {
+        name:"Review A Partner",
+        icon:"mdi-human-greeting"
+      },
+      {
+        name:"Quiz",
+        icon:"mdi-calendar-question"
+      },
+      {
         name: "Sign Out",
         icon: "mdi-login",
-      },
+      }
     ],
     routeIndex: [],
   }),
@@ -186,6 +206,21 @@ export default {
         this.$router.push("/zipcode");
       } else if (passedIndex == 8) {
         this.$router.push("/screenshotShare");
+      }
+      else if (passedIndex==9){
+        this.$router.push("/orderSummary")
+      }
+      else if (passedIndex==10){
+        this.$router.push("/shareMultipleProducts")
+      }
+      else if (passedIndex==11){
+        this.$router.push("/ratingAndReview")
+      }
+      else if (passedIndex==12){
+        this.$router.push("/reviewAPartner")
+      }
+      else if (passedIndex==13){
+        this.$router.push("/quiz")
       }
     },
     goToProfilePage() {
