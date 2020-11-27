@@ -24,9 +24,11 @@ import EmptyCart from "./components/EmptyCart";
 import LoginForQuiz from "./components/QuestionAndAnswers/LoginScreen.vue";
 import SearchResultsPage from "./components/SearchResultsPage";
 import ProfilePage from "./components/Profile-Page";
+import cart from "./components/cart";
 
 export const routes = [
   { path: "/", component: AppNavigation },
+  { path: "/cart", component: cart },
   { path: "/productslider", component: ProductSlider },
   { path: "/buyagain", component: BuyAgain },
   { path: "/partnerpincode", component: PartnerPincode },
