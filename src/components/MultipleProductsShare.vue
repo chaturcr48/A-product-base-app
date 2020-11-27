@@ -155,7 +155,7 @@
           </v-list-item>
         </v-card>
       </div>
-      <v-btn large @click="takeShot">
+      <v-btn large @click="sendDetails()">
         <v-icon color="green">mdi-whatsapp</v-icon>
       </v-btn>
     </v-bottom-sheet>
@@ -201,6 +201,20 @@ export default {
       );
       window.location.href = this.image;
     },
+    sendDetails:async function(){
+        let detailsToSend={
+            "0":{
+                name:"Fortune Besan 1 Kg",
+                price:"Rs 89"
+            },
+            "1":{
+                name:"Rajgira Atta 500g",
+                price:"49"
+            }
+        };
+        let response=await axios.post("http://localhost:8000/sendDetails",{data:detailsToSend});
+        console.log(response);
+    }
   },
   watch: {
     clicked(value) {
