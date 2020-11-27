@@ -6,7 +6,7 @@
         <v-toolbar-title align="center">Categories</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn icon>
-          <v-icon>mdi-cart</v-icon>
+          <v-icon v-on:click="goToCart()">mdi-cart</v-icon>
         </v-btn>    
       </v-app-bar>
       <div align="center" class="search_div mt-n4">
@@ -76,6 +76,12 @@ export default {
         console.log(res.data.Categories);
     });
   },
+
+    methods: {
+        goToCart() {
+        this.$router.push("/cart");
+        } 
+       }
 }
 </script>
 

@@ -37,7 +37,7 @@
                   v-for="trendingItem in trendingItems"
                   :key="trendingItem"
                 >
-                  <p class="ma-0">
+                  <p class="ma-0" @click="goToProducts">
                     {{ trendingItem }}
                   </p>
                 </v-row>
@@ -89,6 +89,11 @@ export default {
         "Tea & Coffee",
       ],
     };
+  },
+  methods: {
+    goToProducts() {
+      this.$router.push("/productdetails");
+    },
   },
 };
 </script>
