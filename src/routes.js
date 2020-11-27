@@ -7,6 +7,7 @@ import MyWishlist from "./components/MyWishlist";
 import Category from "./components/Category";
 import RatingAndReview from "./components/RatingAndReview";
 import ViewAllReviews from "./components/ViewAllReviews";
+import ReviewAPartner from "./components/ReviewAPartner";
 import Form from "./components/Form";
 import FormView from "./components/FormView";
 import ProductDetails from "./components/ProductDetails";
@@ -24,9 +25,12 @@ import EmptyCart from "./components/EmptyCart";
 import LoginForQuiz from "./components/QuestionAndAnswers/LoginScreen.vue";
 import SearchResultsPage from "./components/SearchResultsPage";
 import ProfilePage from "./components/Profile-Page";
+import cart from "./components/cart";
+import QuizHomePage from "./components/HomePageQuiz.vue";
 
 export const routes = [
   { path: "/", component: AppNavigation },
+  { path: "/cart", component: cart },
   { path: "/productslider", component: ProductSlider },
   { path: "/buyagain", component: BuyAgain },
   { path: "/partnerpincode", component: PartnerPincode },
@@ -52,4 +56,6 @@ export const routes = [
   { path: "/loginForQuiz", component: LoginForQuiz },
   { path: "/SearchResultsPage", component: SearchResultsPage },
   { path: "/profilePage", component: ProfilePage },
+  { path:"/reviewAPartner",component:ReviewAPartner},
+  { path:"/quiz",component:QuizHomePage}
 ];
