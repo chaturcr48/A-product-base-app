@@ -7,7 +7,7 @@
         <v-spacer></v-spacer>
         <v-btn icon>
           <v-icon v-on:click="goToCart()">mdi-cart</v-icon>
-        </v-btn>    
+        </v-btn>
       </v-app-bar>
       <div align="center" class="search_div mt-n4">
         <v-text-field
@@ -104,13 +104,30 @@ export default {
         // console.log(res.data.Categories);
       });
   },
-
-    methods: {
-        goToCart() {
-        this.$router.push("/cart");
-        } 
-       }
-}
+  mounted() {
+    this.fromSearchPage();
+  },
+  methods: {
+    fromSearchPage() {
+      this.$root.$on("showSpecificCategory", (index) => {
+        console.log("Am I getting Called ?");
+        if (index) {
+          this.panelDynamic = index;
+          console.log(index);
+        } else {
+          console.log("No idea !");
+        }
+      });
+      if (this.panelDynamic == "") {
+        this.panel = [];
+        this.panel.push(0);
+      } else {
+        this.panel = [];
+        this.panel.push(this.panelDynamic);
+      }
+    },
+  },
+};
 </script>
 
 <style>
