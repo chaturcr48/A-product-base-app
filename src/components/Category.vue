@@ -108,6 +108,9 @@ export default {
     this.fromSearchPage();
   },
   methods: {
+    goToCart() {
+      this.$router.push("/cart");
+    },
     fromSearchPage() {
       this.$root.$on("showSpecificCategory", (index) => {
         console.log("Am I getting Called ?");
