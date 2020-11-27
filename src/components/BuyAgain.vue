@@ -52,7 +52,7 @@
             <v-card-actions class="mt-n4 pb-6">
                 <v-row>
                     <v-col align="center">
-                        <v-btn large class="btn-cart" color="#fca219" outlined rounded>Add to Cart</v-btn>
+                        <v-btn large class="btn-cart" color="#fca219" outlined rounded v-on:click="goToCart()">Add to Cart</v-btn>
                     </v-col>
                 </v-row>
             </v-card-actions>
@@ -141,6 +141,9 @@ export default {
         share(shareProductIndex) {
             this.sharedProductName = this.productData[shareProductIndex].product;
             this.sharedProductPrice = this.productData[shareProductIndex].product.ProductPrices[0];
+        },
+        goToCart() {
+        this.$router.push("/cart");
         },
         redirect(){
             this.$router.push('/productdetails')
