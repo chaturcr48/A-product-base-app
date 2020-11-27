@@ -110,10 +110,14 @@ export default {
   methods: {
     fromSearchPage() {
       this.$root.$on("showSpecificCategory", (index) => {
+        console.log("Receiving");
         console.log("Am I getting Called ?");
         if (index) {
           this.panelDynamic = index;
           console.log(index);
+          this.panel = [];
+          this.panel.push(this.panelDynamic);
+          
         } else {
           console.log("No idea !");
         }

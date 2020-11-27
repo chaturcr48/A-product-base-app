@@ -82,11 +82,10 @@ export default {
     return {
       items: ["Aata & Flour"],
       trendingItems: [
-        "Atta & Floors",
-        "Rice and other Grains",
-        "Dal And Pulses",
-        "Sugar",
-        "Tea & Coffee",
+        "Grocery",
+        "Food",
+        "Beverages",
+        "Cleaning and Home Care",
       ],
       index: "",
     };
@@ -94,6 +93,7 @@ export default {
   methods: {
     sendIndex() {
       this.$root.$emit("showSpecificCategory", this.index);
+      console.log("Emittting");
       // console.log(this.index);
     },
     goToProducts(index) {
