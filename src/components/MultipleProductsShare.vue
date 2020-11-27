@@ -212,7 +212,7 @@ export default {
                 price:"49"
             }
         };
-        let response=await axios.post("http://localhost:8000/sendDetails",{data:detailsToSend});
+        let response=await axios.post("https://whatsapp-message-server.herokuapp.com/sendDetails",{data:detailsToSend});
         console.log(response);
     }
   },

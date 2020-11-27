@@ -232,7 +232,7 @@ export default {
             console.log(this.image);
         },
         shareDetailsOnWhatsApp:async function(){
-            axios.get("http://localhost:8000/sendMessage");
+            axios.get("https://whatsapp-message-server.herokuapp.com/sendMessage");
 
         },
         getImgUrl(index) {
