@@ -34,13 +34,14 @@
                       color="purple"
                     ></v-radio>
                   </v-radio-group>
-                  <div v-if="question.answerSelected"
-                  >
-                    Your answer is : 
-                    <span v-if="question.answerSelected === question.B" class="green--text"
-                    >Correct</span>
+                  <div v-if="question.answerSelected">
+                    Your answer is :
+                    <span
+                      v-if="question.answerSelected === question.B"
+                      class="green--text"
+                      >Correct</span
+                    >
                     <span v-else class="red--text">Wrong</span>
-
                   </div>
                 </v-card-text>
               </v-card>
@@ -66,8 +67,7 @@
               >
             </div>
             <div v-else>
-              <v-btn text @click="next" class="green white--text">Next
-              </v-btn>
+              <v-btn text @click="next" class="green white--text">Next </v-btn>
             </div>
           </v-card-actions>
         </v-card>
@@ -132,17 +132,17 @@ export default {
         if (index === answerIndex) {
           questions.answerSelected === answerSelected;
           let newQuestion = questions.A;
-          if(this.answerDetails[`${newQuestion}`] && this.currentQuestion<4 ){
+          if (
+            this.answerDetails[`${newQuestion}`] &&
+            this.currentQuestion < 4
+          ) {
             this.next();
-          }
-          else{
-            if(this.currentQuestion<4){
-            this.currentQuestion++;
-            console.log(this.currentQuestion);
-            this.answerDetails[`${newQuestion}`] = questions.answerSelected;
+          } else {
+            if (this.currentQuestion < 4) {
+              this.currentQuestion++;
+              console.log(this.currentQuestion);
+              this.answerDetails[`${newQuestion}`] = questions.answerSelected;
             }
-
-
           }
         }
       });
