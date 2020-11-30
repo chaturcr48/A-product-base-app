@@ -34,12 +34,12 @@
                       color="purple"
                     ></v-radio>
                   </v-radio-group>
-                  <div v-if="question.answerSelected">
-                    Your answer is :{{
-                      question.answerSelected === question.B
-                        ? "Correct "
-                        : "Wrong"
-                    }}
+                  <div v-if="question.answerSelected"
+                  >
+                    Your answer is : 
+                    <span v-if="question.answerSelected === question.B" class="green--text"
+                    >Correct</span>
+                    <span v-else class="red--text">Wrong</span>
 
                   </div>
                 </v-card-text>
