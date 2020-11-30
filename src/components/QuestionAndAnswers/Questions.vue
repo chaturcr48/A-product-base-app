@@ -40,14 +40,7 @@
                         ? "Correct "
                         : "Wrong"
                     }}
-                    <div>
-                      <div class="green--text">
-                        Correct Answer:{{ question.B }}
-                      </div>
-                      <div class="yellow--text">
-                        Your Answer:{{ question.answerSelected }}
-                      </div>
-                    </div>
+
                   </div>
                 </v-card-text>
               </v-card>
@@ -73,8 +66,7 @@
               >
             </div>
             <div v-else>
-              <v-btn text @click="next" class="green white--text">
-                {{ currentQuestion === 4 ? "Submit Test" : "Next" }}
+              <v-btn text @click="next" class="green white--text">Next
               </v-btn>
             </div>
           </v-card-actions>
@@ -127,10 +119,6 @@ export default {
       this.onboarding =
         this.onboarding + 1 === this.length ? 0 : this.onboarding + 1;
     },
-    prev() {
-      this.onboarding =
-        this.onboarding - 1 < 0 ? this.length - 1 : this.onboarding - 1;
-    },
     getCurrentCountdown() {
       this.secondsCountdown = 60 - this.getSeconds;
       this.minutesCountdown = 10 - this.getMinutes;
@@ -144,10 +132,20 @@ export default {
         if (index === answerIndex) {
           questions.answerSelected === answerSelected;
           let newQuestion = questions.A;
-          this.answerDetails[`${newQuestion}`] = questions.answerSelected;
+          if(this.answerDetails[`${newQuestion}`] && this.currentQuestion<4 ){
+            this.next();
+          }
+          else{
+            if(this.currentQuestion<4){
+            this.currentQuestion++;
+            console.log(this.currentQuestion);
+            this.answerDetails[`${newQuestion}`] = questions.answerSelected;
+            }
+
+
+          }
         }
       });
-      this.currentQuestion++;
       console.log(this.answerDetails);
     },
     checkScore: async function() {
