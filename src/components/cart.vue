@@ -25,7 +25,17 @@
         <v-row class="text-caption" justify="space-around">
           <caption>
             <v-icon>mdi-map-marker </v-icon>
-            Deliver to Parth - Ahemdabad 280105
+            Deliver to
+            {{
+              customerData.customerName
+            }}
+            -
+            {{
+              customerData.customerLocation
+            }}
+            {{
+              customerData.customerPINCode
+            }}
           </caption>
           <p>CHANGE</p>
         </v-row>
@@ -43,47 +53,28 @@
               <v-expansion-panel-content>
                 <v-divider width="100%"></v-divider>
                 <v-divider></v-divider>
-                <v-row class="mt-n1">
+                <v-row
+                  class="mt-n1"
+                  v-for="(product, index) in customerData.Combo"
+                  :key="index"
+                >
                   <v-col cols="5">
                     <v-img
                       class="ml-2"
-                      src="https://www.jiomart.com/images/product/420x420/490000086/everest-shahi-biryani-masala-50-g-0-20200621.jpeg"
+                      :src="product.productIMGURL"
                       height="70"
                       width="30%"
                     ></v-img>
                   </v-col>
                   <v-col cols="7">
-                    Fortune Basmati Rice 1kg
+                    {{ product.productName }}
                     <p>
-                      ₹150
+                      ₹{{ product.productFrendyPrice }}
                       <span class="red--text text-decoration-line-through"
-                        >₹170.00</span
+                        >₹{{ product.productOriginalPrice }}</span
                       >
                       <v-chip class="ml-1 pa-1" color="green" label outlined>
-                        12% off
-                      </v-chip>
-                    </p>
-                  </v-col>
-                </v-row>
-
-                <v-row class="mt-n4 mb-n8">
-                  <v-col cols="5">
-                    <v-img
-                      class="ml-2"
-                      src="https://www.jiomart.com/images/product/420x420/490000086/everest-shahi-biryani-masala-50-g-0-20200621.jpeg"
-                      height="70"
-                      width="30%"
-                    ></v-img>
-                  </v-col>
-                  <v-col cols="7">
-                    Shahi Biryani Masala 1kg
-                    <p>
-                      ₹60
-                      <span class="red--text text-decoration-line-through"
-                        >₹70.00</span
-                      >
-                      <v-chip class="ml-1 pa-1" color="green" label outlined>
-                        12% off
+                        {{ product.productOff }}% off
                       </v-chip>
                     </p>
                   </v-col>
@@ -106,7 +97,11 @@
       >
         <v-row>
           <v-col cols="6">
-            <span class="green--text">(Saving ₹30) </span>₹210
+            <span class="green--text"
+              >(Saving ₹{{
+                customerData.PaymentDetails.comboBenefits.comboSaving
+              }}) </span
+            >₹{{ customerData.PaymentDetails.comboBenefits.comboTotal }}
           </v-col>
           <v-col justify="space-around">
             <div>
@@ -142,24 +137,27 @@
 
     <div class="pt-4 pl-2">
       <v-card outlined height="100" width="97%" elevation="2" dense>
-        <v-row>
+        <v-row
+          v-for="(product, index) in customerData.SingleProducts"
+          :key="index"
+        >
           <v-col cols="5">
             <v-img
               class="ml-2"
-              src="https://5.imimg.com/data5/NL/AU/MY-27708317/aashirvaad-chakki-atta-500x500.jpg"
+              :src="product.productIMGURL"
               height="70"
               width="30%"
             ></v-img>
           </v-col>
           <v-col cols="7">
-            Asshirvaad Chaki Atta 1kg
+            {{ product.productName }}
             <p>
-              ₹150
+              ₹{{ product.productFrendyPrice }}
               <span class="red--text text-decoration-line-through"
-                >₹112.00</span
+                >₹{{ product.productOriginalPrice }}</span
               >
               <v-chip class="ml-1 pa-1" color="green" label outlined>
-                ₹28 off
+                ₹{{ product.productOff }} off
               </v-chip>
             </p>
           </v-col>
@@ -227,7 +225,7 @@
             <p>Cart Total</p>
           </v-col>
           <v-col cols="3">
-            <p>₹640</p>
+            <p>₹{{ customerData.PaymentDetails.cartTotal }}</p>
           </v-col>
         </v-row>
         <v-row class="ml-5 mt-n7">
@@ -235,7 +233,7 @@
             <p>Processing Fees</p>
           </v-col>
           <v-col cols="3">
-            <p>-₹10</p>
+            <p>-₹{{ customerData.PaymentDetails.processingFees }}</p>
           </v-col>
         </v-row>
         <v-row class="ml-5 mt-n7">
@@ -243,7 +241,7 @@
             <p>Discount on processing fees</p>
           </v-col>
           <v-col cols="3">
-            <p>-₹30</p>
+            <p>-₹{{ customerData.PaymentDetails.processingFeesDiscount }}</p>
           </v-col>
         </v-row>
 
@@ -253,7 +251,7 @@
             <h3>Payment Information</h3>
           </v-col>
           <v-col cols="3">
-            <h3>₹540</h3>
+            <h3>₹{{ customerData.PaymentDetails.paymentInformation }}</h3>
           </v-col>
         </v-row>
 
@@ -262,7 +260,7 @@
             <p>Total Saving</p>
           </v-col>
           <v-col cols="3">
-            <p>-₹90</p>
+            <p>-₹{{ customerData.PaymentDetails.totalSaving }}</p>
           </v-col>
         </v-row>
       </v-card>
@@ -273,7 +271,10 @@
         <v-row class="deep-purple accent-4" dense>
           <v-col cols="6">
             <p>
-              Total Payable: <span><h3>₹540</h3></span>
+              Total Payable:
+              <span
+                ><h3>₹{{ customerData.PaymentDetails.totalPayable }}</h3></span
+              >
             </p>
           </v-col>
           <v-col cols="6">
@@ -294,9 +295,53 @@ export default {
     panel: [0],
     disabled: false,
     readonly: false,
-
     messages: 0,
     message: 0,
+    customerData: {
+      customerName: "Parth",
+      customerLocation: "Ahemdabad",
+      customerPINCode: "280105",
+      Combo: [
+        {
+          productName: "Fortune Basmati Rice 1kg",
+          productFrendyPrice: "150",
+          productOriginalPrice: "170.00",
+          productOff: "12",
+          productIMGURL:
+            "https://www.jiomart.com/images/product/420x420/490000086/everest-shahi-biryani-masala-50-g-0-20200621.jpeg",
+        },
+        {
+          productName: "Shahi Biryani Masala 1kg",
+          productFrendyPrice: "60",
+          productOriginalPrice: "70.00",
+          productOff: "12",
+          productIMGURL:
+            "https://www.jiomart.com/images/product/420x420/490000086/everest-shahi-biryani-masala-50-g-0-20200621.jpeg",
+        },
+      ],
+      SingleProducts: [
+        {
+          productName: "Asshirvaad Chaki Atta 1kg",
+          productFrendyPrice: "150",
+          productOriginalPrice: "112.00",
+          productOff: "28",
+          productIMGURL:
+            "https://5.imimg.com/data5/NL/AU/MY-27708317/aashirvaad-chakki-atta-500x500.jpg",
+        },
+      ],
+      PaymentDetails: {
+        cartTotal: "640",
+        processingFees: "10",
+        processingFeesDiscount: "30",
+        paymentInformation: "540",
+        totalSaving: "90",
+        totalPayable: "540",
+        comboBenefits: {
+          comboSaving: "30",
+          comboTotal: "210",
+        },
+      },
+    },
   }),
 };
 </script>
