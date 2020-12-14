@@ -26,13 +26,13 @@
             </div>
             <div class="number-position white--text">
               <v-icon small class="white black--text mr-1">mdi-phone</v-icon>
-              {{ phoneNumber ? `+91 ${phoneNumber}` : "+91 987654321" }}
+              {{ phoneNumber ? `+91 ${phoneNumber}` : "+91 8888888888" }}
               <span class="address-position">
                 <v-icon small class="white black--text mr-1"
                   >mdi-map-marker</v-icon
                 >
-                {{ cityName ? cityName : "New Ranip"
-                }}{{ stateName ? `,${stateName}` : ",Ahmedabad" }}</span
+                {{ cityName ? cityName : "City Name"
+                }}{{ stateName ? `,${stateName}` : ",State Name" }}</span
               >
             </div>
           </v-card-title>
