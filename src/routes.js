@@ -27,6 +27,13 @@ import SearchResultsPage from "./components/SearchResultsPage";
 import ProfilePage from "./components/Profile-Page";
 import cart from "./components/cart";
 import QuizHomePage from "./components/HomePageQuiz.vue";
+// Nursery Routes
+import PopUp from "./components/NurseryProject/PopUpTour";
+import PartnerAppCarousel from "./components/NurseryProject/PartnerAppCarousel";
+import PartnerAppCardScreenOne from "./components/NurseryProject/PartnerAppCardScreenOne";
+import PartnerAppCardCreation from "./components/NurseryProject/PartnerAppCardCreation";
+import PartnerAppCardGenerated from "./components/NurseryProject/PartnerAppCardGenerated";
+import PartnerAppCreatives from "./components/NurseryProject/Creatives";
 
 export const routes = [
   { path: "/", component: AppNavigation },
@@ -56,6 +63,12 @@ export const routes = [
   { path: "/loginForQuiz", component: LoginForQuiz },
   { path: "/SearchResultsPage", component: SearchResultsPage },
   { path: "/profilePage", component: ProfilePage },
-  { path:"/reviewAPartner",component:ReviewAPartner},
-  { path:"/quiz",component:QuizHomePage}
+  { path: "/reviewAPartner", component: ReviewAPartner },
+  { path: "/quiz", component: QuizHomePage },
+  { path: "/popUpTour", component: PopUp },
+  { path: "/partnerAppCarousel", component: PartnerAppCarousel },
+  { path: "/partnerAppCardScreen1", component: PartnerAppCardScreenOne },
+  { path: "/partnerAppCardCreation", component: PartnerAppCardCreation },
+  { path: "/partnerAppCardGenerated", component: PartnerAppCardGenerated },
+  { path: "/partnerAppCreatives", component: PartnerAppCreatives },
 ];
