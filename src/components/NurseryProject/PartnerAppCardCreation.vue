@@ -11,44 +11,32 @@
       <span>12:30</span>
     </v-system-bar>
 
-    <v-card color="purple" dark class="pa-4 pt-1" id="printme" rounded="2">
-      <div>
-        <v-row>
-          <v-col cols="8" class="pa-1"
-            ><span class="font-weight-black text-subtitle-2">{{
-              name ? name : "Full Name"
-            }}</span
-            ><br />
-            <span class="font-weight-black text-caption"
-              >{{ WorkExperience ? WorkExperience : "Work Experience"
-              }}<v-icon x-small color="purple">mdi-record</v-icon>
-              {{ occupation ? occupation : "Occupation" }}
-            </span>
-          </v-col>
-          <v-col cols="4" align-self="end" class="pa-1">
-            <v-icon large color="">
-              mdi-facebook
-            </v-icon>
-          </v-col>
-        </v-row>
-        <v-row class="text-caption font-weight-medium">
-          <v-col cols="12" class="pa-1">
-            <v-icon color="" small>mdi-email</v-icon
-            ><span class="ml-1">{{ email ? email : "xyz@gmail.com" }}</span>
-          </v-col>
-          <v-col cols="12" class="pa-1">
-            <v-icon color="" small>mdi-phone</v-icon
-            ><span class="ml-1"
-              >{{ phoneNumber ? phoneNumber : "8888888888" }}
-            </span></v-col
-          >
-          <v-col cols="12" class="pa-1">
-            <v-icon color="" small>mdi-map-marker</v-icon
-            ><span class="ml-1"
-              >{{ cityName ? cityName : "Delhi" }}
-            </span></v-col
-          >
-        </v-row>
+    <v-card class="mx-auto" max-width="344">
+      <div class="printMe">
+        <v-img src="../../assets/CardBlank.png" height="200px" class="img">
+          <v-avatar class="profile-image" size="45">
+            <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
+          </v-avatar>
+          <v-card-title class="px-3 py-1 text-subtitle-2 font-weight-bold">
+            <div class="name-position yellow--text">
+              {{ name ? name : "Full Name" }}<br />Frendy Partner <br /><span
+                class="white--text hashtag"
+                >#EmpoweredHomepreneur</span
+              >
+            </div>
+            <div class="number-position white--text">
+              <v-icon small class="white black--text mr-1">mdi-phone</v-icon>
+              {{ phoneNumber ? `+91 ${phoneNumber}` : "+91 987654321" }}
+              <span class="address-position">
+                <v-icon small class="white black--text mr-1"
+                  >mdi-map-marker</v-icon
+                >
+                {{ cityName ? cityName : "New Ranip"
+                }}{{ stateName ? `,${stateName}` : ",Ahmedabad" }}</span
+              >
+            </div>
+          </v-card-title>
+        </v-img>
       </div>
     </v-card>
     <v-container>
@@ -62,27 +50,12 @@
           required
         ></v-text-field>
         <v-text-field
-          v-model="email"
-          :rules="emailRules"
-          label="E-mail"
-          required
-        ></v-text-field>
-        <v-text-field
           v-model="phoneNumber"
           label="Phone Number"
           required
         ></v-text-field>
         <v-text-field v-model="cityName" label="City" required></v-text-field>
-        <v-text-field
-          v-model="WorkExperience"
-          label="Work Experience"
-          required
-        ></v-text-field>
-        <v-text-field
-          v-model="occupation"
-          label="Occupation"
-          required
-        ></v-text-field>
+        <v-text-field v-model="stateName" label="State" required></v-text-field>
       </v-form>
       <v-btn color="primary" class="ma-4" width="90%" @click="submitCard()"
         >Generate Visiting Card</v-btn
@@ -103,15 +76,9 @@ export default {
         (v) => !!v || "Name is required",
         (v) => (v && v.length <= 20) || "Name must be less than 10 characters",
       ],
-      email: "",
-      emailRules: [
-        (v) => !!v || "E-mail is required",
-        (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
-      ],
       phoneNumber: "",
       cityName: "",
-      WorkExperience: "",
-      occupation: "",
+      stateName: "",
     };
   },
 
@@ -153,5 +120,32 @@ export default {
 }
 .abc {
   margin: 8px;
+}
+.name-position {
+  color: white;
+  margin-left: 44.25px;
+  margin-top: 7.8px;
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+.hashtag {
+  display: block;
+  font-size: 0.5rem;
+  padding-top: -100px;
+}
+.profile-image {
+  margin-left: 10px;
+  margin-top: 10px;
+  position: absolute;
+}
+.number-position {
+  margin-top: 19px;
+  margin-left: 90px;
+  font-size: 0.75rem;
+}
+.address-position {
+  font-size: 0.75rem;
+  display: block;
+  margin-top: -8px;
 }
 </style>

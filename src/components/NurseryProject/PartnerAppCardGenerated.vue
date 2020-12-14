@@ -8,54 +8,32 @@
       <span>12:30</span>
     </v-system-bar>
 
-    <v-card
-      color="purple"
-      width="330"
-      elevation="20"
-      dark
-      class="pa-4 mb-6  mt-12 ml-4 pt-1"
-      id="printme"
-      rounded="2"
-    >
-      <div v-if="valid">
-        <v-row>
-          <v-col cols="10" class="pa-1"
-            ><span class="font-weight-black text-subtitle-2">{{
-              name ? name : `Aniket Sinha`
-            }}</span
-            ><br />
-            <span class="font-weight-black text-caption"
-              >{{ WorkExperience ? WorkExperience : "8 yrs exp"
-              }}<v-icon x-small color="purple">mdi-record</v-icon>
-              {{ occupation ? occupation : "Developer" }}
-            </span>
-          </v-col>
-          <v-col cols="2" align-self="end" class="pa-1">
-            <v-icon large color="">
-              mdi-facebook
-            </v-icon>
-          </v-col>
-        </v-row>
-        <v-row class="text-caption font-weight-medium">
-          <v-col cols="12" class="pa-1">
-            <v-icon color="" small>mdi-email</v-icon
-            ><span class="ml-1">{{
-              email ? email : "john.doe@gmail.com"
-            }}</span>
-          </v-col>
-          <v-col cols="12" class="pa-1">
-            <v-icon color="" small>mdi-phone</v-icon
-            ><span class="ml-1"
-              >{{ phoneNumber ? phoneNumber : "9876543210" }}
-            </span></v-col
-          >
-          <v-col cols="12" class="pa-1">
-            <v-icon color="" small>mdi-map-marker</v-icon
-            ><span class="ml-1"
-              >{{ cityName ? cityName : "New York" }}
-            </span></v-col
-          >
-        </v-row>
+    <v-card class="mx-auto" max-width="344">
+      <div class="printMe">
+        <v-img src="../../assets/CardBlank.png" height="200px" class="img">
+          <v-avatar class="profile-image" size="45">
+            <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
+          </v-avatar>
+          <v-card-title class="px-3 py-1 text-subtitle-2 font-weight-bold">
+            <div class="name-position yellow--text">
+              {{ name ? name : "Full Name" }}<br />Frendy Partner <br /><span
+                class="white--text hashtag"
+                >#EmpoweredHomepreneur</span
+              >
+            </div>
+            <div class="number-position white--text">
+              <v-icon small class="white black--text mr-1">mdi-phone</v-icon>
+              {{ phoneNumber ? `+91 ${phoneNumber}` : "+91 987654321" }}
+              <span class="address-position">
+                <v-icon small class="white black--text mr-1"
+                  >mdi-map-marker</v-icon
+                >
+                {{ cityName ? cityName : "New Ranip"
+                }}{{ stateName ? `,${stateName}` : ",Ahmedabad" }}</span
+              >
+            </div>
+          </v-card-title>
+        </v-img>
       </div>
     </v-card>
 
@@ -96,8 +74,7 @@ export default {
     email: "",
     phoneNumber: "",
     cityName: "",
-    WorkExperience: "",
-    occupation: "",
+    stateName: "",
   }),
   created() {
     console.log(this.$store.getters.name);
@@ -106,6 +83,42 @@ export default {
 </script>
 
 <style>
+.avtar {
+  text-align: center;
+}
+.avtar img {
+  width: 100px;
+}
+.abc {
+  margin: 8px;
+}
+.name-position {
+  color: white;
+  margin-left: 44.25px;
+  margin-top: 7.8px;
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+.hashtag {
+  display: block;
+  font-size: 0.5rem;
+  padding-top: -100px;
+}
+.profile-image {
+  margin-left: 10px;
+  margin-top: 10px;
+  position: absolute;
+}
+.number-position {
+  margin-top: 19px;
+  margin-left: 90px;
+  font-size: 0.75rem;
+}
+.address-position {
+  font-size: 0.75rem;
+  display: block;
+  margin-top: -8px;
+}
 .abc {
   color: black;
 }

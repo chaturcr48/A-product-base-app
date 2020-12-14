@@ -34,6 +34,7 @@ import PartnerAppCardScreenOne from "./components/NurseryProject/PartnerAppCardS
 import PartnerAppCardCreation from "./components/NurseryProject/PartnerAppCardCreation";
 import PartnerAppCardGenerated from "./components/NurseryProject/PartnerAppCardGenerated";
 import PartnerAppCreatives from "./components/NurseryProject/Creatives";
+import CardChatur from "./components/NurseryProject/CardChatur";
 
 export const routes = [
   { path: "/", component: AppNavigation },
@@ -71,4 +72,5 @@ export const routes = [
   { path: "/partnerAppCardCreation", component: PartnerAppCardCreation },
   { path: "/partnerAppCardGenerated", component: PartnerAppCardGenerated },
   { path: "/partnerAppCreatives", component: PartnerAppCreatives },
+  { path: "/CardChatur", component: CardChatur },
 ];
