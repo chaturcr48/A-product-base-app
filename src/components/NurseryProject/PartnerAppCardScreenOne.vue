@@ -26,6 +26,71 @@
         </v-img>
       </v-card>
     </v-container>
+    <v-container>
+      <v-card width="100%" elevation="8">
+        <v-img
+          src="../../assets/PartnerCard.png"
+          width="100%"
+          class="pa-4 mb-4"
+          contai
+        >
+        </v-img>
+      </v-card>
+    </v-container>
+    <v-container>
+      <v-card width="">
+      <v-img
+        height=""
+        src="https://www.economist.com/sites/default/files/images/2014/06/blogs/babbage/20140628_stp501.jpg"
+      >
+        <v-card-title class="white--text">
+          <v-avatar size="86">
+            <img
+              alt="user"
+              src="../../assets/avatar.jpeg"
+            />
+          </v-avatar>
+          <div class="ml-3 name">
+            ASHOKE SOLANKI <br />
+            FRENDY PARTNER <br />
+            <span class="span">#EmpoweredHomepreneur</span>
+          </div>
+        </v-card-title>
+        <v-container class="middle text-center">
+          <div class="xyz">
+            <div class="first">
+              <v-icon dark>mdi-phone</v-icon>+91 9876543210
+            </div>
+            <div class="first">
+              <v-icon dark>mdi-phone</v-icon>New Town, Kolkata
+            </div>
+          </div>
+          <v-spacer></v-spacer>
+          <div>
+              <v-avatar size="86">
+            <img
+              src="../../assets/MainSeHum.png"
+              alt="user"
+            />
+              </v-avatar>
+          </div>
+        </v-container>
+        <v-container class="text-center">
+            <!-- <v-avatar size="86"> -->
+          <img
+            alt="user"
+            width ="80px"
+            src="../../assets/abc.png"
+            class="last"
+          />
+            <!-- </v-avatar> -->
+        </v-container>
+        <h4 class="foot_head">
+          Frendy se Groceries mangwayen..partner ko phone lagayen
+        </h4>
+      </v-img>
+    </v-card>
+    </v-container>
     <v-btn
       class="primary float-centre ma-4"
       color="success"
@@ -62,5 +127,32 @@ export default {
 }
 .abc {
   color: black;
+}
+</style>
+
+<style>
+.span {
+  font-size: 15px;
+}
+.middle {
+  color: white;
+  display: flex;
+}
+.first {
+  color: white;
+}
+.foot_head {
+  color: white;
+  text-align: center;
+  font-size: 13px;
+}
+.xyz {
+  margin-left: 100px;
+}
+.name{
+    font-size: 15px;
+}
+.last{
+  margin-top: -30px;
 }
 </style>

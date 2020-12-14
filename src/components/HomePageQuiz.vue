@@ -38,7 +38,6 @@
                 <li>write here rules of the game.</li>
                 <li>write here rules of the game.</li>
                 <li>write here rules of the game.</li>
-                <li>write here rules of the game.</li>
               </ul>
             </v-card-text>
           </div>
