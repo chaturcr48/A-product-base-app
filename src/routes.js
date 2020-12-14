@@ -7,6 +7,7 @@ import MyWishlist from "./components/MyWishlist";
 import Category from "./components/Category";
 import RatingAndReview from "./components/RatingAndReview";
 import ViewAllReviews from "./components/ViewAllReviews";
+import ReviewAPartner from "./components/ReviewAPartner";
 import Form from "./components/Form";
 import FormView from "./components/FormView";
 import ProductDetails from "./components/ProductDetails";
@@ -22,9 +23,21 @@ import MultipleProductsShare from "./components/MultipleProductsShare";
 import Questions from "./components/QuestionAndAnswers/Questions";
 import EmptyCart from "./components/EmptyCart";
 import LoginForQuiz from "./components/QuestionAndAnswers/LoginScreen.vue";
+import SearchResultsPage from "./components/SearchResultsPage";
+import ProfilePage from "./components/Profile-Page";
+import cart from "./components/cart";
+import QuizHomePage from "./components/HomePageQuiz.vue";
+// Nursery Routes
+import PopUp from "./components/NurseryProject/PopUpTour";
+import PartnerAppCarousel from "./components/NurseryProject/PartnerAppCarousel";
+import PartnerAppCardScreenOne from "./components/NurseryProject/PartnerAppCardScreenOne";
+import PartnerAppCardCreation from "./components/NurseryProject/PartnerAppCardCreation";
+import PartnerAppCardGenerated from "./components/NurseryProject/PartnerAppCardGenerated";
+import PartnerAppCreatives from "./components/NurseryProject/Creatives";
 
 export const routes = [
   { path: "/", component: AppNavigation },
+  { path: "/cart", component: cart },
   { path: "/productslider", component: ProductSlider },
   { path: "/buyagain", component: BuyAgain },
   { path: "/partnerpincode", component: PartnerPincode },
@@ -42,10 +55,20 @@ export const routes = [
   { path: "/zipcode", component: Zipcode },
   { path: "/login", component: Login },
   { path: "/screenshotShare", component: ScreenShotShare },
-  {path:"/orderSummary",component:OrderSummary},
-  {path:"/multipleshare",component:MultipleShare},
+  { path: "/orderSummary", component: OrderSummary },
+  { path: "/multipleshare", component: MultipleShare },
   { path: "/shareMultipleProducts", component: MultipleProductsShare },
   { path: "/QnAs_questions", component: Questions },
   { path: "/EmptyCart", component: EmptyCart },
   { path: "/loginForQuiz", component: LoginForQuiz },
+  { path: "/SearchResultsPage", component: SearchResultsPage },
+  { path: "/profilePage", component: ProfilePage },
+  { path: "/reviewAPartner", component: ReviewAPartner },
+  { path: "/quiz", component: QuizHomePage },
+  { path: "/popUpTour", component: PopUp },
+  { path: "/partnerAppCarousel", component: PartnerAppCarousel },
+  { path: "/partnerAppCardScreen1", component: PartnerAppCardScreenOne },
+  { path: "/partnerAppCardCreation", component: PartnerAppCardCreation },
+  { path: "/partnerAppCardGenerated", component: PartnerAppCardGenerated },
+  { path: "/partnerAppCreatives", component: PartnerAppCreatives },
 ];

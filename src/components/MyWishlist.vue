@@ -47,7 +47,7 @@
               <v-row>
                 <v-col cols-6 align="left" class="pt-0">
                   <h4 class="font-weight-medium mr-auto price">
-                    Rs {{ product.price }}/-
+                    ₹ {{ product.price }}/-
                   </h4>
                 </v-col>
                 <v-col cols-6 align="right" class="pt-0">
